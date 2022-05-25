@@ -1,0 +1,10 @@
+controllers:
+  resource: ../src/Controller/
+  type: annotation
+
+kernel:
+  resource: '%kernel.project_dir%/src/Kernel.php'
+  type: annotation
+
+health:
+  resource: '@CushonHealthBundle/Resources/config/routes.yaml'

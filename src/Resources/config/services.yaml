@@ -1,0 +1,45 @@
+---
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+    
+  _instanceof:
+    Cushon\HealthBundle\ApplicationHealth\DependencyCheck:
+      tags:
+        - 'cushon_health.dependency_check'
+
+  # makes classes in src/ available to be used as services
+  # this creates a service per class whose id is the fully-qualified class name
+  Cushon\HealthBundle\:
+    resource: '%cushon_health.bundle_path%'
+    
+  Cushon\HealthBundle\Controller\:
+    resource: '%cushon_health.bundle_path%/Controller'
+    tags:
+      - 'controller.service_arguments'
+        
+  Cushon\HealthBundle\Console\Command\:
+    resource: '%cushon_health.bundle_path%/Console/Command'
+    tags:
+      - 'console.command'
+
+  Cushon\HealthBundle\ApplicationHealth\Dependencies\SimpleDependencies:
+    factory: 
+      - 'Cushon\HealthBundle\ApplicationHealth\Dependencies\SimpleDependencies'
+      - 'fromIterable' 
+    arguments:
+      - '@Cushon\HealthBundle\ApplicationHealth\Dependencies\Simpledependencies\HealthReportFactory'
+      - !tagged_iterator cushon_health.dependency_check
+
+  Cushon\HealthBundle\Message\Query\HealthCheck:
+    public: true
+    alias: 'Cushon\HealthBundle\Message\Query\HealthCheck\DefaultHealthCheckQuery'
+
+  Ergebnis\Json\Printer\Printer: ~
+  Ergebnis\Json\Printer\PrinterInterface: '@Ergebnis\Json\Printer\Printer'
+  
+  Cushon\HealthBundle\Message\QueryFactory\ServiceContainerHealthCheck:
+    arguments:
+      - '@service_container'

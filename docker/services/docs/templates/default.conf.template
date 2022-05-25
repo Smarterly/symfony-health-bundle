@@ -1,0 +1,9 @@
+server {
+  listen ${DOCS_PORT} default_server;
+  server_name smarterly.docs _;
+
+  location / {
+    index index.html;
+    root ${APP_CODE_DIR}/docs;
+  }
+}

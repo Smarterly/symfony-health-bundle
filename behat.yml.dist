@@ -1,0 +1,24 @@
+---
+default:
+  autoload:
+    'Tests\Behat': '%paths.base%/tests/behat/src'
+  formatters:
+    pretty: true
+  suites:
+    health-messagebus:
+      paths:
+        - "%paths.base%/features/application_health.feature"
+      contexts:
+        - Tests\Behat\Context\MessageBus
+    health-console:
+      paths:
+        - "%paths.base%/features/application_health.feature"
+      contexts:
+        - Tests\Behat\Context\Console
+
+  extensions:
+    FriendsOfBehat\SymfonyExtension:
+      bootstrap: "tests/bootstrap.php"
+      kernel:
+        class: App\Kernel
+        environment: test

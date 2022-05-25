@@ -1,0 +1,7 @@
+---
+services:
+  App\ApplicationHealth\DependencyCheck\NullDependency:
+    arguments:
+      $name: 'Null dependency'
+      $health: true
+      $info: 'Some info about the fake dependency'

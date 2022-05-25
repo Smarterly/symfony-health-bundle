@@ -1,0 +1,32 @@
+---
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: docker/services/app/Dockerfile
+    environment:
+      APP_CODE_DIR: "${APP_CODE_DIR?err}"
+      APP_CACHE_DIR: '/cache'
+      APP_LOG_DIR: '/cushon/build/logs/symfony'
+      APP_ENV: "${APP_ENV}"
+    restart: unless-stopped
+    volumes:
+      - ./:/cushon
+    networks:
+      - app
+  nginx:
+    build:
+      context: docker/services/nginx
+      dockerfile: Dockerfile
+    environment:
+      APP_CODE_DIR: "${APP_CODE_DIR?err}"
+      NGINX_PORT: "${NGINX_PORT:-8080}"
+    networks:
+      - app
+    restart: unless-stopped
+    ports:
+      - "${HOST_NGINX_PORT:?err}:${NGINX_PORT:-8080}"
+networks:
+  app:

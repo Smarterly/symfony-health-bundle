@@ -1,0 +1,5 @@
+---
+health:
+  path: /health
+  controller: App\Controller\CheckHealth
+  methods:    GET|HEAD

@@ -1,0 +1,37 @@
+---
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\ApplicationHealth\DependencyCheck:
+    autowire: false
+    autoconfigure: false
+
+  Cushon\HealthBundle\Console\Command\CheckHealth:
+    public: true
+
+  Cushon\HealthBundle\QueryBus\MessengerHealthQueryBus:
+    public: true
+
+  Symfony\Component\HttpKernel\KernelInterface: '@kernel'
+
+  App\ApplicationHealth\DependencyCheck\:
+    resource: '%kernel.project_dir%/src/ApplicationHealth/DependencyCheck/'
+    autowire: false
+    autoconfigure: false
+
+  app.dependency_check1:
+    synthetic: true
+    public: true
+    tags:
+      - 'cushon_health.dependency_check'
+        
+  app.dependency_check2:
+    synthetic: true
+    public: true
+    tags:
+      - 'cushon_health.dependency_check'
+
+  Tests\Behat\:
+    resource: '%cushon_health.bundle_path%/../tests/behat/src/*'
