@@ -1,3 +1,21 @@
-*       export-ignore
-src/    export-subst
-tests/  export-subst
+app                 export-ignore
+docker              export-ignore
+features            export-ignore
+tests               export-ignore
+.editorconfig       export-ignore
+.env                export-ignore
+.env.test           export-ignore
+.phpmetrics.json    export-ignore
+behat.yml.dist      export-ignore
+composer.lock       export-ignore
+docker-compose.yml  export-ignore
+infection.json      export-ignore
+Makefile            export-ignore
+phpcs.xml.dist      export-ignore
+phpmd.xml.dist      export-ignore
+phpstan.neon.dist   export-ignore
+phpunit.xml.dist    export-ignore
+psalm.xml           export-ignore
+symfony.lock        export-ignore
+
+
