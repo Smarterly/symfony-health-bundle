@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 env:
-  APP_BUILD_DIR: ${{ runner.temp }}
+  APP_BUILD_DIR: "${{ runner.temp }}"
   HOST_NGINX_PORT: 9010
 
 jobs:
