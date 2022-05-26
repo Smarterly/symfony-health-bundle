@@ -2,6 +2,7 @@
 [![Minimum PHP version: 8.1.0](https://img.shields.io/badge/php-8.1.0%2B-blue.svg)](https://packagist.org/packages/Smarterly/symfony-health-bundle)
 [![Latest Stable Version](https://poser.pugx.org/Smarterly/symfony-health-bundle/v/stable)](https://packagist.org/packages/Smarterly/symfony-health-bundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Smarterly/symfony-health-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Smarterly/symfony-health-bundle/?branch=main)
+[![codecov](https://codecov.io/gh/Smarterly/symfony-health-bundle/branch/main/graph/badge.svg)](https://codecov.io/gh/Smarterly/symfony-health-bundle)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FSmarterly%2Fsymfony-health-bundle%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/Smarterly/symfony-health-bundle/main)
 
 ***
