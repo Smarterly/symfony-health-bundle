@@ -42,4 +42,3 @@ jobs:
         php-version: '8.1'
         tools: infection
         extensions: intl, opcache, pcov, ds
-      run: infection
