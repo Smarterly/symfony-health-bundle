@@ -38,6 +38,7 @@ jobs:
       run: docker-compose exec -T bundle composer test
       
     - name: Run infection
+      uses: shivammathur/setup-php@v2
       with:
         php-version: '8.1'
         tools: infection
