@@ -27,7 +27,7 @@ final class Constants
      */
     public static function buildDir(): string
     {
-        return self::rootDir() . '/build';
+        return getenv('APP_BUILD_DIR');
     }
 
     /**

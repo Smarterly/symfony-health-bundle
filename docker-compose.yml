@@ -8,6 +8,7 @@ services:
       dockerfile: docker/services/bundle/Dockerfile
     environment:
       APP_CODE_DIR: "${APP_CODE_DIR?err}"
+      APP_BUILD_DIR: "${APP_BUILD_DIR}"
       APP_CACHE_DIR: '/cache'
       APP_LOG_DIR: '/cushon/build/logs/symfony'
       APP_ENV: "${APP_ENV}"
