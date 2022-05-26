@@ -3,6 +3,28 @@
   "description": "A Symfony bundle for microservice health checks",
   "license": "Proprietary",
   "type": "symfony-bundle",
+  "authors": [
+    {
+      "name": "Barney Hanlon",
+      "homepage": "https://cushon.co.uk",
+      "role": "Software Engineering Manager"
+    },
+    {
+      "name": "Rob Pavier",
+      "homepage": "https://cushon.co.uk",
+      "role": "Software Engineering Manager"
+    },
+    {
+      "name": "Lucy Ferrabee",
+      "homepage": "https://cushon.co.uk",
+      "role": "Software Engineer"
+    },
+    {
+      "name": "Paul Mcewan",
+      "homepage": "https://cushon.co.uk",
+      "role": "Software Engineer"
+    }
+  ],
   "require": {
     "php": "^8.1",
     "ergebnis/json-printer": "^3.2",
