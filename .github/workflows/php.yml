@@ -43,10 +43,11 @@ jobs:
           APP_BUILD_DIR: ${{ runner.temp }}
           APP_CACHE_DIR: ${{ runner.temp }}/cache
           APP_LOG_DIR: ${{ runner.temp }}/logs
+          COVERAGE_DIR: ${{ runner.temp }}/coverage
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
       - uses: codecov/codecov-action@v2
         with:
-          files: ${{ runner.temp }}
+          directory: ${{ runner.temp }}/coverage
           flags: unittests # optional
           name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
