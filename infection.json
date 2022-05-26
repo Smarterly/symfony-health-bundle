@@ -8,7 +8,7 @@
   "logs": {
     "text": "build/logs/infection.log",
     "stryker": {
-      "badge": "main"
+      "report": "main"
     }
   },
   "mutators": {
