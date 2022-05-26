@@ -150,7 +150,7 @@
       "@phpunit:all",
       "@infection"
     ],
-    "phpunit:all": "php -d pcov.enabled=1 vendor/bin/simple-phpunit --coverage-text --coverage-xml ${COVERAGE_DIR:-build/coverage}",
+    "phpunit:all": "vendor/bin/simple-phpunit --coverage-text --coverage-cobertura ${COVERAGE_DIR:-build/coverage}/cobertura.xml",
     "psalm": "vendor/bin/psalm",
     "psalm:fix": "vendor/bin/psalm --alter --issues=all --dry-run",
     "quality": [
