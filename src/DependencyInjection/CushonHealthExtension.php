@@ -37,16 +37,16 @@ final class CushonHealthExtension extends Extension
     /**
      * @param mixed[] $configs
      * @param ContainerBuilder $container
-     * @return mixed
      * @throws \Exception
      * @SuppressWarnings(PHPMD.UnusedFormalParameter) Comes from the Symfony parent
      */
-    public function load(array $configs, ContainerBuilder $container): mixed
+    public function load(array $configs, ContainerBuilder $container): void
     {
-        $container->registerForAutoconfiguration(DependencyCheck::class)
-            ->addTag($this->generateKeyFromRoot(self::KEY_DEPENDENCY_CHECKS));
+        $this->createLoader($container)->load('services.yaml');
+        $dependencyCheckTag = $this->generateKeyFromRoot(self::KEY_DEPENDENCY_CHECKS);
 
-        return $this->createLoader($container)->load('services.yaml');
+        $container->registerForAutoconfiguration(DependencyCheck::class)
+            ->addTag($dependencyCheckTag);
     }
 
     /**

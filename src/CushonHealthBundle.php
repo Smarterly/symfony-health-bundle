@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Cushon\HealthBundle;
 
-use Cushon\HealthBundle\DependencyInjection\Compiler\DependencyCheckPass;
+use Cushon\HealthBundle\DependencyInjection\Compiler\DebuggerPass;
 use Cushon\HealthBundle\DependencyInjection\CushonHealthExtension;
 use Cushon\HealthBundle\Traits\BundleRootKeyTrait;
 use Symfony\Component\Config\FileLocator;
@@ -13,6 +13,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor Bundle uses Symfony's ContainerAwareTrait
+ */
 final class CushonHealthBundle extends Bundle
 {
     use BundleRootKeyTrait;

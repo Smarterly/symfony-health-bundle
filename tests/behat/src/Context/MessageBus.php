@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace Tests\Behat\Context;
 
 use Behat\Behat\Context\Context;
-use Behat\Behat\Tester\Exception\PendingException;
 use Cushon\HealthBundle\ApplicationHealth\DependencyCheck;
-use Cushon\HealthBundle\ApplicationHealth\HealthReport;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus\SimpleStatus;
 use Cushon\HealthBundle\Message\Query\HealthCheck\DefaultHealthCheckQuery;
 use Cushon\HealthBundle\Message\Result\HealthCheck;
-use Cushon\HealthBundle\QueryBus\HealthCheckQueryBus;
 use Cushon\HealthBundle\QueryBus\MessengerHealthQueryBus;
 use PHPUnit\Framework\Assert;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -99,7 +96,7 @@ final class MessageBus implements Context
         $dependencyCheck2 = $this->prophesize(DependencyCheck::class);
         $dependencyCheck2->check()->willReturn($simpleStatus2);
 
-        $container->set('bundle.dependency_check1', $dependencyCheck1->reveal());
-        $container->set('bundle.dependency_check2', $dependencyCheck2->reveal());
+        $container->set('app.dependency_check1', $dependencyCheck1->reveal());
+        $container->set('app.dependency_check2', $dependencyCheck2->reveal());
     }
 }

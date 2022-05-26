@@ -25,6 +25,14 @@ final class Constants
     /**
      * @return string
      */
+    public static function buildDir(): string
+    {
+        return self::rootDir() . '/build';
+    }
+
+    /**
+     * @return string
+     */
     public static function fixturesDir(): string
     {
         return self::testsDir() . '/fixtures';
@@ -43,6 +51,6 @@ final class Constants
      */
     public static function appDir(): string
     {
-        return self::rootDir() . '/bundle';
+        return self::rootDir() . '/app';
     }
 }

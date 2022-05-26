@@ -18,14 +18,23 @@ final class QueryServiceDefinitionNotFound extends RuntimeException implements Q
      */
     public static function create(ContainerInterface $container, string $definitionName): self
     {
-        $exc = new self(sprintf(
-            'No service definition for "%s" was found in the container',
-            $definitionName
-        ));
+        return new self(
+            $container,
+            sprintf(
+                'No service definition for "%s" was found in the container',
+                $definitionName
+            )
+        );
+    }
 
-        $exc->container = $container;
-
-        return $exc;
+    /**
+     * @param ContainerInterface $container
+     * @param string $message
+     */
+    private function __construct(ContainerInterface $container, string $message)
+    {
+        $this->container = $container;
+        parent::__construct($message);
     }
 
     /**

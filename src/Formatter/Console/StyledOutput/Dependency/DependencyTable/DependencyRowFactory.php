@@ -40,6 +40,10 @@ final class DependencyRowFactory
     public function createDependencyRow(DependencyStatus $dependencyStatus): Generator
     {
         $tableCellStyle = $this->createTableCellStyle($dependencyStatus);
+        /**
+         * @var string $name
+         * @var string $text
+         */
         foreach ($this->getStatusData($dependencyStatus) as $name => $text) {
             yield $name => new TableCell($text, ['style' => $tableCellStyle]);
         }

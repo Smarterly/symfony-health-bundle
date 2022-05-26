@@ -10,7 +10,7 @@
     "psr/log": "^3.0",
     "symfony/config": "6.0.*",
     "symfony/dependency-injection": "6.0.*",
-    "symfony/framework-bundle": "6.0.*",
+    "symfony/framework-bundle": "^6.0",
     "symfony/messenger": "^6.0",
     "symfony/yaml": "^6.0",
     "thecodingmachine/safe": "^2.1"
@@ -41,10 +41,10 @@
     "symfony/runtime": "^6.0",
     "vimeo/psalm": "^4.22"
   },
-    "suggest": {
-        "ext-zend-opcache": "Zend Op Cache to improve performance",
-        "ext-ds": "PHP data structures for handling Sets. See https://www.php.net/manual/en/book.ds.php"
-    },
+  "suggest": {
+    "ext-ds": "PHP data structures for handling Sets. See https://www.php.net/manual/en/book.ds.php",
+    "ext-zend-opcache": "Zend Op Cache to improve performance"
+  },
   "minimum-stability": "stable",
   "prefer-stable": true,
   "autoload": {
@@ -104,17 +104,19 @@
       "cache:clear": "symfony-cmd",
       "assets:install %PUBLIC_DIR%": "symfony-cmd"
     },
-    "behat": "vendor/bin/behat",
+    "behat": "vendor/bin/behat --format progress --format pretty",
+    "behat:console": "@behat --suite=console",
+    "behat:messagebus": "@behat --suite=messagebus",
     "console": "app/bin/console",
     "fix": [
       "@phpcbf",
-      "@psalm-fix",
+      "@psalm:fix",
       "@composer normalize"
     ],
     "health": "@composer console cushon:health",
     "infection": "php -d pcov.enabled=1 vendor/bin/infection --show-mutations --threads=8",
     "metrics": [
-      "@phpunit-all",
+      "@phpunit:all",
       "@phpmetrics"
     ],
     "phpcbf": "vendor/bin/phpcbf",
@@ -123,12 +125,12 @@
     "phpmetrics": "php -d 'error_reporting=E_ALL ^ E_DEPRECATED' vendor/bin/phpmetrics --config=.phpmetrics.json",
     "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon.dist",
     "phpunit": [
-      "@phpunit-all",
+      "@phpunit:all",
       "@infection"
     ],
-    "phpunit-all": "php -d pcov.enabled=1 vendor/bin/simple-phpunit --coverage-text",
+    "phpunit:all": "php -d pcov.enabled=1 vendor/bin/simple-phpunit --coverage-text",
     "psalm": "vendor/bin/psalm",
-    "psalm-fix": "vendor/bin/psalm --alter --issues=all --dry-run",
+    "psalm:fix": "vendor/bin/psalm --alter --issues=all --dry-run",
     "quality": [
       "@phpcs",
       "@phpmd",

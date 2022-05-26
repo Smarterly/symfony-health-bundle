@@ -4,7 +4,8 @@ services:
     autowire: true
     autoconfigure: true
 
-  App\ApplicationHealth\DependencyCheck:
+  # Disable the example Null Dependency Check in test
+  App\ApplicationHealth\DependencyCheck\NullDepdencyCheck:
     autowire: false
     autoconfigure: false
 
@@ -15,11 +16,6 @@ services:
     public: true
 
   Symfony\Component\HttpKernel\KernelInterface: '@kernel'
-
-  App\ApplicationHealth\DependencyCheck\:
-    resource: '%kernel.project_dir%/src/ApplicationHealth/DependencyCheck/'
-    autowire: false
-    autoconfigure: false
 
   app.dependency_check1:
     synthetic: true

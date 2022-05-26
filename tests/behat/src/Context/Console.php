@@ -18,8 +18,6 @@ use Prophecy\Argument;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\BufferedOutput;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Tests\Behat\Context\Traits\ProphecyContextTrait;
@@ -32,8 +30,8 @@ final class Console implements Context
     private KernelInterface $kernel;
 
     private HealthCheckResult $healthCheck;
-    private Application $application;
-    private OutputInterface $output;
+
+    private string $display;
 
     /**
      * @param KernelInterface $kernel
@@ -41,7 +39,6 @@ final class Console implements Context
     public function __construct(KernelInterface $kernel)
     {
         $this->kernel = $kernel;
-        $this->output = new BufferedOutput();
     }
 
     /**
@@ -62,13 +59,16 @@ final class Console implements Context
     {
         $this->injectMessageBusMock();
         $application = new Application($this->kernel);
+        $output = new BufferedOutput();
         $application->doRun(
             new ArgvInput([
             'console',
             CheckHealth::getDefaultName()
             ]),
-            $this->output
+            $output
         );
+
+        $this->display = $output->fetch();
     }
 
     /**
@@ -76,9 +76,8 @@ final class Console implements Context
      */
     public function iAmInformedTheServiceIsHealthy(): void
     {
-        $display = $this->output->fetch();
-        Assert::assertStringContainsString('[OK] Status: Healthy', $display);
-        Assert::assertMatchesRegularExpression('/Test dependency 1\s+Healthy/', $display);
+        Assert::assertStringContainsString('[OK] Status: Healthy', $this->display);
+        Assert::assertMatchesRegularExpression('/Test dependency 1\s+Healthy/', $this->display);
     }
 
     /**
@@ -87,8 +86,8 @@ final class Console implements Context
     public function thatOneDependencyIsUnhealthy(): void
     {
         $this->healthCheck = new Unhealthy(
-            new SimpleStatus('Test dependency 1', false),
-            new SimpleStatus('Test dependency 2', true),
+            new SimpleStatus('Test dependency 1', false, 'Degraded'),
+            new SimpleStatus('Test dependency 2', true, 'All good'),
         );
     }
 
@@ -97,11 +96,22 @@ final class Console implements Context
      */
     public function iAmInformedTheServiceIsUnhealthy(): void
     {
-        $display = $this->output->fetch();
-        Assert::assertStringContainsString('[WARNING] Status: Unhealthy!', $display);
-        Assert::assertMatchesRegularExpression('/Test dependency 1\s+Unhealthy/', $display);
+        Assert::assertStringContainsString('[WARNING] Status: Unhealthy!', $this->display);
+        Assert::assertMatchesRegularExpression('/Test dependency 1\s+Unhealthy/', $this->display);
     }
 
+    /**
+     * @AfterScenario
+     * @return void
+     */
+    public function after(): void
+    {
+        echo $this->display;
+    }
+
+    /**
+     * @return void
+     */
     private function injectMessageBusMock(): void
     {
         /** @var ContainerBuilder $container */

@@ -23,7 +23,7 @@ final class SimpleDependencies implements Dependencies
 
     /**
      * @param HealthReportFactory $healthReportFactory
-     * @param iterable<DependencyCheck> $dependencyChecks
+     * @param iterable<int, DependencyCheck> $dependencyChecks
      * @return static
      */
     public static function fromIterable(

@@ -15,13 +15,19 @@ final class QueryServiceDefinitionNotFoundTest extends TestCase
 
     public function testItReturnsTheContainer(): void
     {
+        /** @var ContainerInterface $container */
         $container = $this->prophesize(ContainerInterface::class)->reveal();
+        $definitionName = 'foo-bar';
 
         $queryServiceDefinitionNotFound = QueryServiceDefinitionNotFound::create(
             $container,
-            'foo-bar'
+            $definitionName
         );
 
         $this->assertSame($container, $queryServiceDefinitionNotFound->getContainer());
+        $this->assertStringContainsString(
+            $definitionName,
+            $queryServiceDefinitionNotFound->getMessage()
+        );
     }
 }

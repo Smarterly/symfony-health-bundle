@@ -120,3 +120,7 @@ health: .composer-health
 brew:
 	brew bundle install;
 
+commit: craft metrics
+	git add docs/metrics;
+	git commit;
+

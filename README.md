@@ -11,9 +11,14 @@ The only supported method of installing the bundle is via [`composer`][composer]
 composer require cushon/health-bundle
 ```
 
-## Recommended Packages and Extensions
+### Recommended Packages and Extensions
 
 Several libraries and packages are included in the `suggest` section of the `composer.jspn`. The bundle utilises the `Set` class of [PHP Data Structures][data-structures]. However, the [DS polyfill][php-ds-polyfill] is used to ensure that the bundle can run on a stack without the extension.
+
+## Getting Started
+
+Please see the section on creating a [Dependency Check][dependency-check].
+
 
 ## Structure
 
@@ -46,21 +51,7 @@ bin/console cushon:health
 
 An example of the output:
 
-```bash
-Application Health
-------------------
-
-                                                                                                                        
- [OK] Status: Healthy                                                                                                   
-                                                                                                                        
-
- ----------------- ------- Dependencies -------------------------- 
-  Name              Status    Info                                 
- ----------------- --------- ------------------------------------- 
-  Null dependency   Healthy   Some info about the fake dependency  
- ----------------- --------- ------------------------------------- 
-
-```
+![](docs/assets/img/screenshots/console-output-application-healthy.png)
 
 ## The JSON Api Endpoint:
 
@@ -87,3 +78,4 @@ The bundle is tested with both unit testing and behavioural testing with [phpUni
 [docker-compose.yml]: ./docker-compose.yml
 [php-ds-polyfill]: https://packagist.org/packages/php-ds/php-ds
 [symfony-bundle-system]: https://symfony.com/doc/current/bundles.html
+[dependency-check]: ./docs/DEPENDENCY-CHECKS.md

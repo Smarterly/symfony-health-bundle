@@ -4,16 +4,13 @@ services:
   _defaults:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-    
-  _instanceof:
-    Cushon\HealthBundle\ApplicationHealth\DependencyCheck:
-      tags:
-        - 'cushon_health.dependency_check'
 
   # makes classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name
   Cushon\HealthBundle\:
     resource: '%cushon_health.bundle_path%'
+    tags:
+      - 'cushon.health'
     
   Cushon\HealthBundle\Controller\:
     resource: '%cushon_health.bundle_path%/Controller'

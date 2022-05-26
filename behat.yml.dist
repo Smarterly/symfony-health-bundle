@@ -5,12 +5,12 @@ default:
   formatters:
     pretty: true
   suites:
-    health-messagebus:
+    messagebus:
       paths:
         - "%paths.base%/features/application_health.feature"
       contexts:
         - Tests\Behat\Context\MessageBus
-    health-console:
+    console:
       paths:
         - "%paths.base%/features/application_health.feature"
       contexts:
