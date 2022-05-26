@@ -13,7 +13,7 @@ composer require cushon/health-bundle
 
 ## Recommended Packages and Extensions
 
-Several libraries and packages are included in the `suggest` section of the The bundle utilises the `Set` class of [PHP Data Structures][data-structures]. However, the [DS polyfill][php-ds-polyfill] is used to ensure that the bundle can run on a stack without the extension.
+Several libraries and packages are included in the `suggest` section of the `composer.jspn`. The bundle utilises the `Set` class of [PHP Data Structures][data-structures]. However, the [DS polyfill][php-ds-polyfill] is used to ensure that the bundle can run on a stack without the extension.
 
 ## Structure
 
@@ -80,8 +80,10 @@ The bundle is tested with both unit testing and behavioural testing with [phpUni
 [data-structures]: https://www.php.net/manual/en/book.ds.php
 [app-dir]: ./app
 [docker-dir]: ./docker
+[docs-dir]: ./docs
 [features-dir]: ./features
 [src-dir]: ./src
+[tests-dir]: ./tests
 [docker-compose.yml]: ./docker-compose.yml
 [php-ds-polyfill]: https://packagist.org/packages/php-ds/php-ds
 [symfony-bundle-system]: https://symfony.com/doc/current/bundles.html
