@@ -9,6 +9,9 @@ on:
 permissions:
   contents: read
 
+env:
+  HOST_NGINX_PORT: 9010
+
 jobs:
   build:
     runs-on: ubuntu-latest
