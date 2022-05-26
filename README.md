@@ -1,5 +1,6 @@
 # Cushon Symfony Health Bundle
 
+
 ## Overview
 This bundle provides a mini-framework for a [Symfony][symfony] application to be queried on it's current "health". The specifics of what "healthy" and "unhealthy" are depend on the application and must be defined. However, the boilerplate of creating Symfony Controllers and Console Commands to make a query (and provide a health report) are taken care of.
 
@@ -18,6 +19,17 @@ Several libraries and packages are included in the `suggest` section of the `com
 ## Getting Started
 
 Please see the section on creating a [Dependency Check][dependency-check].
+
+## The Console Command
+
+### Usage
+```bash
+bin/console cushon:health
+```
+
+An example of the output:
+
+![](docs/assets/img/screenshots/console-output-application-healthy.png)
 
 
 ## Structure
@@ -38,20 +50,9 @@ The following files and directories are not included in the release to reduce ar
 
 [`/features`][features-dir] - Contains [Gherkin][gherkin] simplified scenarions to drive behavioural testing and provide [specification by example][specification-by-example].
 
-[`/tests`][tests-dir]: The tests are excluded when using a release.
+[`/tests`][tests-dir] - The tests are excluded when using a release.
 
 Additionally, files to run testing and quality tooling (e.g. `infection.json`, `phpunit.xml.dist`) are also omitted.
-
-## The Console Command
-
-### Usage
-```bash
-bin/console cushon:health
-```
-
-An example of the output:
-
-![](docs/assets/img/screenshots/console-output-application-healthy.png)
 
 ## The JSON Api Endpoint:
 
@@ -59,8 +60,6 @@ The default endpoint is available at `/health`.
 
 ## Testing & Quality
 The bundle is tested with both unit testing and behavioural testing with [phpUnit][phpunit] and [behat][behat] respectively.
-
-
 
 [composer]: https://getcomposer.org/
 [symfony]: https://symfony.com/
