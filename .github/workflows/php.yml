@@ -18,7 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Start the Docker services via docker-compose
-      run: docker-compose up
+      run: docker-compose up -d
     - name: Validate composer.json and composer.lock
       run: docker-compose exec bundle composer validate --strict
 
