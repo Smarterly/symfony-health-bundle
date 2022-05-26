@@ -40,4 +40,5 @@ jobs:
         env:
           APP_BUILD_DIR: ${{ runner.temp }}
           APP_CACHE_DIR: ${{ runner.temp }}/cache
+          APP_LOG_DIR: ${{ runner.temp }}/logs
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
