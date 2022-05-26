@@ -11,7 +11,7 @@ permissions:
 
 env:
   HOST_NGINX_PORT: 9010
-  APP_BUILD_DIR: ${RUNNER_TEMP}
+  APP_BUILD_DIR: $RUNNER_TEMP
 
 jobs:
   build:
