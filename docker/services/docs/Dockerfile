@@ -1,4 +1,4 @@
-FROM nginx:1.20.2-alpine
+FROM nginx:stable-alpine
 
 ENV APP_CODE_DIR="/cushon"
 ENV DOCS_PORT=8082
