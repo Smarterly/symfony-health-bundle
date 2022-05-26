@@ -10,6 +10,7 @@ use Cushon\HealthBundle\Traits\BundleRootKeyTrait;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class CushonHealthBundle extends Bundle
@@ -42,7 +43,7 @@ final class CushonHealthBundle extends Bundle
     /**
      * @inheritDoc
      */
-    protected function createContainerExtension(): CushonHealthExtension
+    public function getContainerExtension(): ?ExtensionInterface
     {
         return new CushonHealthExtension(
             new FileLocator(self::CONFIG_PATH),

@@ -2,7 +2,7 @@ ARG PHP_IMAGE_APP_VERSION="fpm-alpine3.15"
 
 FROM "php:${PHP_IMAGE_APP_VERSION}" as base
 RUN apk update
-RUN apk add gcc autoconf
+RUN apk add gcc autoconf ca-certificates
 RUN apk add --no-cache --virtual .phpize-deps ${PHPIZE_DEPS}
 RUN pecl install -o -f ds pcov pcntl posix
 RUN docker-php-ext-enable opcache ds pcov

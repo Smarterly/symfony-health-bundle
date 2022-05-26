@@ -15,7 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CheckHealth extends Command
 {
     public const DEFAULT_NAME = 'cushon:health';
-    public const DEFAULT_DESCRIPTION = 'Console command to initiate an app health check';
+    public const DEFAULT_DESCRIPTION = 'Console command to initiate an bundle health check';
 
     protected static $defaultName = self::DEFAULT_NAME;
     protected static $defaultDescription = self::DEFAULT_DESCRIPTION;

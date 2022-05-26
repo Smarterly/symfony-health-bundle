@@ -1,7 +1,9 @@
 ---
 services:
-  App\ApplicationHealth\DependencyCheck\NullDependency:
+  App\ApplicationHealth\DependencyCheck\NullDependencyCheck:
     arguments:
       $name: 'Null dependency'
       $health: true
       $info: 'Some info about the fake dependency'
+    tags:
+      - 'cushon_health.dependency_check'

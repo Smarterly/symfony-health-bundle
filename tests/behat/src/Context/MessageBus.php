@@ -99,7 +99,7 @@ final class MessageBus implements Context
         $dependencyCheck2 = $this->prophesize(DependencyCheck::class);
         $dependencyCheck2->check()->willReturn($simpleStatus2);
 
-        $container->set('app.dependency_check1', $dependencyCheck1->reveal());
-        $container->set('app.dependency_check2', $dependencyCheck2->reveal());
+        $container->set('bundle.dependency_check1', $dependencyCheck1->reveal());
+        $container->set('bundle.dependency_check2', $dependencyCheck2->reveal());
     }
 }

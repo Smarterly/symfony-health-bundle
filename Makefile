@@ -5,6 +5,7 @@ ENV_LOCAL_FILE:=".env.local"
 
 DOCKER_COMPOSE:=docker-compose -f docker-compose.yml --env-file=${ENV_LOCAL_FILE}
 DOCKER_LOG_LEVEL:=INFO
+DOCKER_BUNDLE_CONTAINER:="bundle"
 .DEFAULT: help
 .PHONY: help
 ifndef VERBOSE
@@ -21,16 +22,14 @@ endif
 	echo '\nHOST_NGINX_PORT=9010' >> ${ENV_LOCAL_FILE};
 
 setup: ENV_LOCAL = 'dev'
-setup: .test-env-local build-app populate-local-env init
+setup: .test-env-local init
 
-populate-local-env:
-
-build-all:
-	$(DOCKER_COMPOSE) build --parallel
+build-all: .down
+	$(DOCKER_COMPOSE) build --parallel;
 
 build-app:
-	echo 'Building `app` image...'
-	$(DOCKER_COMPOSE) build app
+	echo 'Building `app` image...';
+	$(DOCKER_COMPOSE) build $(DOCKER_BUNDLE_CONTAINER);
 
 init: up craft
 
@@ -39,31 +38,31 @@ init: up craft
 	@$(MAKE) .up >/dev/null;
 
 .up:
-	$(DOCKER_COMPOSE) --log-level $(DOCKER_LOG_LEVEL) up -d
+	$(DOCKER_COMPOSE) --log-level $(DOCKER_LOG_LEVEL) up -d;
 
 .down:
-	$(DOCKER_COMPOSE) down --remove-orphans
+	$(DOCKER_COMPOSE) down --remove-orphans;
 
 down:
-	echo 'Bringing down services...'
+	echo 'Bringing down services...';
 	$(MAKE) .down;
 
 up:
-	echo 'Bringing up services...'
+	echo 'Bringing up services...';
 	$(MAKE) .up;
 
 reload: down up
 
 logs:
-	$(DOCKER_COMPOSE) logs -f -t
+	$(DOCKER_COMPOSE) logs -f -t;
 
 run: reload logs
 
 login:
-	 $(DOCKER_COMPOSE) exec app /bin/sh
+	 $(DOCKER_COMPOSE) exec $(DOCKER_BUNDLE_CONTAINER) /bin/sh;
 
 .composer-%: .up-quiet
-	$(DOCKER_COMPOSE) exec app composer $*;
+	$(DOCKER_COMPOSE) exec $(DOCKER_BUNDLE_CONTAINER) composer $*;
 
 install:
 	$(MAKE) .composer-install;
@@ -117,4 +116,7 @@ craft: .craft test quality
 console: .composer-console
 
 health: .composer-health
+
+brew:
+	brew bundle install;
 

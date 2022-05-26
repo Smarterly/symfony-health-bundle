@@ -43,6 +43,6 @@ final class Constants
      */
     public static function appDir(): string
     {
-        return self::rootDir() . '/app';
+        return self::rootDir() . '/bundle';
     }
 }

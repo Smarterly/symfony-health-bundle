@@ -2,10 +2,10 @@
 version: '3.7'
 
 services:
-  app:
+  bundle:
     build:
       context: ./
-      dockerfile: docker/services/app/Dockerfile
+      dockerfile: docker/services/bundle/Dockerfile
     environment:
       APP_CODE_DIR: "${APP_CODE_DIR?err}"
       APP_CACHE_DIR: '/cache'
@@ -28,5 +28,14 @@ services:
     restart: unless-stopped
     ports:
       - "${HOST_NGINX_PORT:?err}:${NGINX_PORT:-8080}"
+  blackfire:
+    image: blackfire/blackfire:2
+    ports: [ "8307" ]
+    environment:
+      # Exposes BLACKFIRE_* environment variables from the host
+      BLACKFIRE_SERVER_ID: ~
+      BLACKFIRE_SERVER_TOKEN: ~
+      BLACKFIRE_CLIENT_ID: ~
+      BLACKFIRE_CLIENT_TOKEN: ~
 networks:
   app:
