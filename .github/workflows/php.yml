@@ -15,11 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run infection
+      - name: Setup pecl extensions
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
-          tools: infection
           extensions: intl, opcache, pcov, ds
 
       - name: Validate composer.json and composer.lock
@@ -40,3 +39,5 @@ jobs:
         run: composer test
         env:
           APP_BUILD_DIR: ${{ runner.temp }}
+          APP_CACHE_DIR: ${{ runner.temp }}/cache
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
