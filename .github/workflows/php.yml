@@ -20,7 +20,7 @@ jobs:
     - name: Start the Docker services via docker-compose
       run: docker-compose up -d
     - name: Validate composer.json and composer.lock
-      run: docker-compose exec bundle composer validate --strict
+      run: docker-compose exec -t bundle composer validate --strict
 
     - name: Cache Composer packages
       id: composer-cache
@@ -35,4 +35,4 @@ jobs:
       run: docker-compose exec bundle composer install
 
     - name: Run test suite
-      run: docker-compose exec bundle composer test
+      run: docker-compose exec -t bundle composer test
