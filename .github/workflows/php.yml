@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker Bundle image
-      run: make build-app
+    - name: Start the Docker services via docker-compose
+      run: docker-compose up
     - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+      run: docker-compose exec bundle composer validate --strict
 
     - name: Cache Composer packages
       id: composer-cache
@@ -29,7 +29,7 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
-      run: make install
+      run: docker-compose exec bundle composer install
 
     - name: Run test suite
-      run: make test
+      run: docker-compose exec bundle composer test
