@@ -3,7 +3,7 @@
 [![Latest Stable Version](https://poser.pugx.org/Smarterly/symfony-health-bundle/v/stable)](https://packagist.org/packages/Smarterly/symfony-health-bundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Smarterly/symfony-health-bundle/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Smarterly/symfony-health-bundle/?branch=main)
 [![codecov](https://codecov.io/gh/Smarterly/symfony-health-bundle/branch/main/graph/badge.svg)](https://codecov.io/gh/Smarterly/symfony-health-bundle)
-[![Known Vulnerabilities](https://snyk.io/test/github/Smarterly/symfony-health-bundle/badge.svg)]()
+[![Known Vulnerabilities](https://snyk.io/test/github/Smarterly/symfony-health-bundle/badge.svg)](https://snyk.io/test/github/Smarterly/symfony-health-bundle)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FSmarterly%2Fsymfony-health-bundle%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/Smarterly/symfony-health-bundle/main)
 
 ***
