@@ -20,6 +20,8 @@ jobs:
         with:
           php-version: '8.1'
           extensions: intl, opcache, pcov, ds
+      - name: Make tempoary build dir
+        run: mkdir -p build
 
       - name: Validate composer.json and composer.lock
         run: composer validate --strict
@@ -42,3 +44,10 @@ jobs:
           APP_CACHE_DIR: ${{ runner.temp }}/cache
           APP_LOG_DIR: ${{ runner.temp }}/logs
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+      - uses: codecov/codecov-action@v2
+        with:
+          files: ${{ runner.temp }}
+          flags: unittests # optional
+          name: codecov-umbrella # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)

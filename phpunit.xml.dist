@@ -27,6 +27,11 @@
     </testsuites>
 
     <coverage processUncoveredFiles="true">
+        <report>
+            <clover outputFile="build/coverage/clover.xml"/>
+            <text outputFile="build/coverage/coverage.txt" showUncoveredFiles="true" showOnlySummary="false"/>
+            <xml outputDirectory="build/coverage/coverage-xml" />
+        </report>
         <include>
             <directory suffix=".php">src</directory>
         </include>
