@@ -1,7 +1,7 @@
 {
   "name": "cushon/health-bundle",
   "description": "A Symfony bundle for microservice health checks",
-  "license": "Proprietary",
+  "license": "MIT",
   "type": "symfony-bundle",
   "authors": [
     {

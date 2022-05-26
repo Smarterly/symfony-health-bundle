@@ -1,5 +1,8 @@
 # Cushon Symfony Health Bundle
 
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FSmarterly%2Fsymfony-health-bundle%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/Smarterly/symfony-health-bundle/main)
+
+***
 
 ## Overview
 This bundle provides a mini-framework for a [Symfony][symfony] application to be queried on it's current "health". The specifics of what "healthy" and "unhealthy" are depend on the application and must be defined. However, the boilerplate of creating Symfony Controllers and Console Commands to make a query (and provide a health report) are taken care of.
@@ -16,10 +19,6 @@ composer require cushon/health-bundle
 
 Several libraries and packages are included in the `suggest` section of the `composer.jspn`. The bundle utilises the `Set` class of [PHP Data Structures][data-structures]. However, the [DS polyfill][php-ds-polyfill] is used to ensure that the bundle can run on a stack without the extension.
 
-## Getting Started
-
-Please see the section on creating a [Dependency Check][dependency-check].
-
 ## The Console Command
 
 ### Usage
@@ -31,6 +30,13 @@ An example of the output:
 
 ![](docs/assets/img/screenshots/console-output-application-healthy.png)
 
+## The JSON Api Endpoint:
+
+The default endpoint is available at `/health`.
+
+## Getting Started
+
+Please see the section on creating a [Dependency Check][dependency-check].
 
 ## Structure
 
@@ -53,10 +59,6 @@ The following files and directories are not included in the release to reduce ar
 [`/tests`][tests-dir] - The tests are excluded when using a release.
 
 Additionally, files to run testing and quality tooling (e.g. `infection.json`, `phpunit.xml.dist`) are also omitted.
-
-## The JSON Api Endpoint:
-
-The default endpoint is available at `/health`.
 
 ## Testing & Quality
 The bundle is tested with both unit testing and behavioural testing with [phpUnit][phpunit] and [behat][behat] respectively.
