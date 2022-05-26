@@ -36,3 +36,10 @@ jobs:
 
     - name: Run test suite
       run: docker-compose exec -T bundle composer test
+      
+    - name: Run infection
+      with:
+        php-version: '8.1'
+        tools: infection
+        extensions: intl, opcache, pcov, ds
+      run: infection
