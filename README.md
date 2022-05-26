@@ -21,7 +21,7 @@ Several libraries and packages are included in the `suggest` section of the `com
 
 [`/src`][src-dir]: Contains the bundle code. With minor deviations, this follows the standard design for the [Symfony Bundle System][symfony-bundle-system].
 
-[`/docs'][docs-dir]: Collation of documentation and metrics for the project.
+[`/docs`][docs-dir]: Collation of documentation and metrics for the project.
 
 ### Directories & Files Not Included In Releases
 
