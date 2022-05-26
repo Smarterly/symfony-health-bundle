@@ -9,12 +9,12 @@ on:
 permissions:
   contents: read
 
-env:
-  APP_BUILD_DIR: ${{ runner.temp }}
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    env:
+      APP_BUILD_DIR: ${{ runner.temp }}
     steps:
       - uses: actions/checkout@v3
       - name: Run infection
