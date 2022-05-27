@@ -14,7 +14,6 @@ build:
           APP_LOG_DIR: build/logs
       dependencies:
         before:
-          - /usr/local/bin/composer self-update
           - mkdir -p "${APP_BUILD_DIR}"
 filter:
   excluded_paths:
