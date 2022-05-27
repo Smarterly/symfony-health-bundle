@@ -74,6 +74,15 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.12"
     },
+    "guzzlehttp/guzzle": {
+        "version": "7.4.3"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.5.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "2.2.1"
+    },
     "infection/abstract-testframework-adapter": {
         "version": "0.5.0"
     },
@@ -121,6 +130,9 @@
     },
     "phar-io/version": {
         "version": "3.2.1"
+    },
+    "php-coveralls/php-coveralls": {
+        "version": "v2.5.2"
     },
     "php-ds/php-ds": {
         "version": "v1.4.1"
@@ -193,8 +205,20 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/log": {
         "version": "3.0.0"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "roave/security-advisories": {
         "version": "dev-latest"
@@ -419,6 +443,9 @@
     },
     "symfony/service-contracts": {
         "version": "v2.5.1"
+    },
+    "symfony/stopwatch": {
+        "version": "v6.0.5"
     },
     "symfony/string": {
         "version": "v6.0.8"
