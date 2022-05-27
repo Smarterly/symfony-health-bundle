@@ -3,7 +3,7 @@ controllers:
   type: annotation
 
 kernel:
-  resource: '%kernel.project_dir%/src/Kernel.php'
+  resource: '../src/Kernel.php'
   type: annotation
 
 health:

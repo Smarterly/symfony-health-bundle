@@ -1,20 +1,20 @@
 build:
   image: default-bionic
-  environment:
-    php: 8.1.2
   nodes:
     analysis:
-      project_setup:
-        override:
-          - 'true'
-      tests:
-        override:
-          - php-scrutinizer-run
-          -
-            command: phpcs-run
-            use_website_config: true
-          - js-scrutinizer-run
-    tests: true
+      environment:
+        php:
+          version: 8.1.2
+          pecl_extensions:
+            - ds
+            - pcov
+        variables:
+          APP_BUILD_DIR: build
+          APP_CACHE_DIR: build/cache
+          APP_LOG_DIR: build/logs
+      dependencies:
+        before:
+          - mkdir -p "${APP_BUILD_DIR}"
 filter:
   excluded_paths:
     - 'app/*'
@@ -23,9 +23,3 @@ filter:
     - 'features/*'
 checks:
   php: true
-  javascript: true
-coding_style:
-  php:
-    spaces:
-      around_operators:
-        concatenation: true

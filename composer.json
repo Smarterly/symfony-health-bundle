@@ -38,7 +38,6 @@
     "thecodingmachine/safe": "^2.1"
   },
   "require-dev": {
-    "ext-pcov": "*",
     "behat/behat": "^3.6",
     "brianium/paratest": "^6.4",
     "dvdoug/behat-code-coverage": "^5.2",
@@ -65,6 +64,7 @@
   },
   "suggest": {
     "ext-ds": "PHP data structures for handling Sets. See https://www.php.net/manual/en/book.ds.php",
+    "ext-pcov": "Fast code coverage extension",
     "ext-zend-opcache": "Zend Op Cache to improve performance"
   },
   "minimum-stability": "stable",
@@ -136,7 +136,7 @@
       "@composer normalize"
     ],
     "health": "@composer console cushon:health",
-    "infection": "php -d pcov.enabled=1 vendor/bin/infection --show-mutations --threads=8",
+    "infection": "php vendor/bin/infection --show-mutations --threads=8",
     "metrics": [
       "@phpunit:all",
       "@phpmetrics"
