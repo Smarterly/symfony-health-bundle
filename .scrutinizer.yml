@@ -2,21 +2,11 @@ build:
   image: default-bionic
   environment:
     php: 8.1.2
+    pecl_extensions:
+      - ds
+      - pcov
   nodes:
     analysis:
-      dependencies:
-        before:
-          - pecl install pcov ds
-          - pecl enable pcov ds
-      project_setup:
-        override:
-          - 'true'
-      tests:
-        override:
-          - php-scrutinizer-run
-            command: phpcs-run
-          - js-scrutinizer-run
-    tests: true
 filter:
   excluded_paths:
     - 'app/*'
@@ -25,9 +15,3 @@ filter:
     - 'features/*'
 checks:
   php: true
-  javascript: true
-coding_style:
-  php:
-    spaces:
-      around_operators:
-        concatenation: true
