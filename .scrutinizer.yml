@@ -8,9 +8,6 @@ build:
         before:
           - pecl install pcov ds
           - pecl enable pcov ds
-      project_setup:
-        override:
-          - php-scrutinizer-run
 filter:
   excluded_paths:
     - 'app/*'
