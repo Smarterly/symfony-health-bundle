@@ -7,13 +7,13 @@ build:
       dependencies:
         before:
           - pecl install pcov ds
+          - pecl enable pcov ds
       project_setup:
         override:
           - 'true'
       tests:
         override:
           - php-scrutinizer-run
-          -
             command: phpcs-run
             use_website_config: true
           - js-scrutinizer-run
