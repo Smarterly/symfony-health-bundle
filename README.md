@@ -3,9 +3,10 @@
 [![Version](http://poser.pugx.org/cushon/health-bundle/version?style=flat-square)](https://packagist.org/packages/cushon/health-bundle)
 [![License](http://poser.pugx.org/cushon/health-bundle/license?style=flat-square)](https://packagist.org/packages/cushon/health-bundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Smarterly/symfony-health-bundle/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Smarterly/symfony-health-bundle/?branch=main)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)
 [![codecov](https://codecov.io/gh/Smarterly/symfony-health-bundle/branch/main/graph/badge.svg?style=flat-square)](https://codecov.io/gh/Smarterly/symfony-health-bundle)
-[![Known Vulnerabilities](https://snyk.io/test/github/Smarterly/symfony-health-bundle/badge.svg?style=flat-square)](https://snyk.io/test/github/Smarterly/symfony-health-bundle)
-
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)
 ***
 
 ## Overview
