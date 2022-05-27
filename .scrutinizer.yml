@@ -1,13 +1,12 @@
 build:
   image: default-bionic
-  environment:
-    php: 8.1.2
   nodes:
     analysis:
-      dependencies:
-        before:
-          - pecl install pcov ds
-          - pecl enable pcov ds
+      environment:
+        php: 8.1.2
+        pecl_extensions:
+          - ds
+          - pcov
 filter:
   excluded_paths:
     - 'app/*'
@@ -16,3 +15,4 @@ filter:
     - 'features/*'
 checks:
   php: true
+  javascript: false
