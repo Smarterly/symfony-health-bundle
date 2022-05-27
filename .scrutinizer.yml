@@ -15,4 +15,3 @@ filter:
     - 'features/*'
 checks:
   php: true
-  javascript: false
