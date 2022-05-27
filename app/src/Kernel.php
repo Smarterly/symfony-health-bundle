@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Kernel\Exception\EnvironmentVariableNotSet;
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
@@ -24,11 +25,7 @@ class Kernel extends BaseKernel
      */
     public function getCacheDir(): string
     {
-        if (!$cacheDir = getenv('APP_CACHE_DIR')) {
-            throw new RuntimeException('Environment variable APP_CACHE_DIR not set');
-        }
-
-        return $cacheDir;
+        return $this->getEnvVar('APP_CACHE_DIR');
     }
 
     /**
@@ -36,10 +33,19 @@ class Kernel extends BaseKernel
      */
     public function getLogDir(): string
     {
-        if (!$logDir = getenv('APP_LOG_DIR')) {
-            throw new RuntimeException('Environment variable APP_LOG_DIR not set');
+        return $this->getEnvVar('APP_LOG_DIR');
+    }
+
+    /**
+     * @param string $varName
+     * @return string
+     */
+    private function getEnvVar(string $varName): string
+    {
+        if (!$var = getenv($varName)) {
+            throw EnvironmentVariableNotSet::fromVarName($varName);
         }
 
-        return $logDir;
+        return $var;
     }
 }
