@@ -3,10 +3,10 @@ build:
   environment:
     php: 8.1.2
   nodes:
-    dependencies:
-      before:
-        - pecl install pcov ds
     analysis:
+      dependencies:
+        before:
+          - pecl install pcov ds
       project_setup:
         override:
           - 'true'
