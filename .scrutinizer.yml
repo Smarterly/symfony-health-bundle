@@ -8,6 +8,12 @@ build:
           pecl_extensions:
             - ds
             - pcov
+        variables:
+          APP_BUILD_DIR: build
+          APP_CACHE_DIR: build/cache
+          APP_LOG_DIR: build/logs
+      before:
+        - mkdir -p "${APP_BUILD_DIR}"
 filter:
   excluded_paths:
     - 'app/*'
