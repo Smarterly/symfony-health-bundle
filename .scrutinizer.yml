@@ -11,12 +11,6 @@ build:
       project_setup:
         override:
           - php-scrutinizer-run
-
-    tests:
-      dependencies:
-        before:
-          - pecl install pcov ds
-          - pecl enable pcov ds
 filter:
   excluded_paths:
     - 'app/*'
