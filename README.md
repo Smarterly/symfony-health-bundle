@@ -4,9 +4,7 @@
 [![License](http://poser.pugx.org/cushon/health-bundle/license?style=flat-square)](https://packagist.org/packages/cushon/health-bundle)
 [![Continuous Integration](https://github.com/Smarterly/symfony-health-bundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/Smarterly/symfony-health-bundle/actions)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Smarterly/symfony-health-bundle/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/Smarterly/symfony-health-bundle/?branch=main)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)
 [![codecov](https://codecov.io/gh/Smarterly/symfony-health-bundle/branch/main/graph/badge.svg?style=flat-square)](https://codecov.io/gh/Smarterly/symfony-health-bundle)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)
 ***
 
@@ -71,6 +69,8 @@ The bundle is tested with both unit testing and behavioural testing with [phpUni
 
 ***
 [![Coverage Status](https://coveralls.io/repos/github/Smarterly/symfony-health-bundle/badge.svg?branch=main)](https://coveralls.io/github/Smarterly/symfony-health-bundle?branch=main)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)
 [![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/)
 
