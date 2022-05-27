@@ -7,6 +7,9 @@ build:
       - pcov
   nodes:
     analysis:
+      tests:
+        override:
+          - php-scrutinizer-run
 filter:
   excluded_paths:
     - 'app/*'
