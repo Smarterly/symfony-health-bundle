@@ -43,10 +43,10 @@ final class StyledOutput implements Console
      */
     public function format(HealthCheck $healthCheck): void
     {
-        $styler = $this->getHealthReportStyler($healthCheck);
+        $healthCheckStyler = $this->getHealthReportStyler($healthCheck);
 
-        $this->applicationStatusFormatter->format($healthCheck, $styler);
-        $this->dependencyFormatter->format($healthCheck, $styler);
+        $this->applicationStatusFormatter->format($healthCheck, $healthCheckStyler);
+        $this->dependencyFormatter->format($healthCheck, $healthCheckStyler);
     }
 
     /**

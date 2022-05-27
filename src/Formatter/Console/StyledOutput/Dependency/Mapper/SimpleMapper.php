@@ -60,11 +60,11 @@ final class SimpleMapper implements Mapper
      */
     private function mapSimpleDependency(SimpleStatus $simpleStatus): Generator
     {
-        $info = (string) $simpleStatus->getInfo();
+        $statusInfo = (string) $simpleStatus->getInfo();
         yield from $this->yieldMap(
             $simpleStatus->getName(),
             $this->getStatusHealth($simpleStatus),
-            $info
+            $statusInfo
         );
     }
 
