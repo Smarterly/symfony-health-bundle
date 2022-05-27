@@ -3,6 +3,9 @@ build:
   environment:
     php: 8.1.2
   nodes:
+    dependencies:
+      before:
+        - pecl install pcov ds
     analysis:
       project_setup:
         override:

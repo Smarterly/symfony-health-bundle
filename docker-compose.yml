@@ -39,5 +39,7 @@ services:
       BLACKFIRE_CLIENT_ID: ~
       BLACKFIRE_CLIENT_TOKEN: ~
       BLACKFIRE_DISABLE_LEGACY_PORT: 'true'
+    networks:
+      - app
 networks:
   app:
