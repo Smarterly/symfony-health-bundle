@@ -56,7 +56,7 @@ jobs:
       - name: Coveralls Parallel
         uses: coverallsapp/github-action@master
         with:
-          path-to-lcov: ${COVERAGE_DIR}
+          path-to-lcov: ${{ runner.temp }}/coverage
           github-token: ${{ secrets.github_token }}
           flag-name: run-${{ matrix.test_number }}
           parallel: true
