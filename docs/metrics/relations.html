@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2022-05-26 15:43:10        , with PHPMetrics v2.8.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2022-05-30 21:42:11        , with PHPMetrics v2.8.1 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -93,7 +93,7 @@
                             <path d="M0 0h24v24H0z" fill="none"/>
                             <path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/>
                         </svg>
-                        Violations (8)
+                        Violations (9)
                     </a>
                 </li>
                                     <li>
@@ -247,12 +247,24 @@
 
     var relations = [
     {
-        "name": "\\App\\ApplicationHealth\\DependencyCheck\\NullDependencyCheck",
+        "name": "\\App\\ApplicationHealth\\DependencyCheck\\DatabaseCheck\\Exception\\NoDatabaseChecksProvided",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\InvalidArgumentException",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\ApplicationHealth\\DependencyCheck\\DatabaseCheck",
         "size": 3000,
         "relations": [
             "\\Cushon\\HealthBundle\\ApplicationHealth\\DependencyCheck",
-            "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
-            "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus\\SimpleStatus"
+            "\\Ds\\Set",
+            "\\App\\ApplicationHealth\\DependencyCheck\\DatabaseCheck\\Exception\\NoDatabaseChecksProvided",
+            "\\Generator",
+            "\\App\\ApplicationHealth\\DependencyCheck\\DatabaseCheck\\DatabaseUserCheck"
         ]
     },
     {
@@ -261,12 +273,56 @@
         "relations": []
     },
     {
-        "name": "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
+        "name": "\\Ds\\Set",
         "size": 3000,
         "relations": []
     },
     {
+        "name": "\\Generator",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\ApplicationHealth\\DependencyCheck\\DatabaseCheck\\DatabaseUserCheck",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\ApplicationHealth\\DependencyCheck\\NullDependencyCheck",
+        "size": 3000,
+        "relations": [
+            "\\Cushon\\HealthBundle\\ApplicationHealth\\DependencyCheck",
+            "\\Generator",
+            "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus\\SimpleStatus"
+        ]
+    },
+    {
         "name": "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus\\SimpleStatus",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\ApplicationHealth\\DependencyCheck\\RandomOrgApiCheck",
+        "size": 3000,
+        "relations": [
+            "\\Cushon\\HealthBundle\\ApplicationHealth\\DependencyCheck",
+            "\\App\\ApplicationHealth\\DependencyCheck\\RandomOrgApiCheck\\HealthDependencyRepository",
+            "\\Generator",
+            "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus\\SimpleStatus"
+        ]
+    },
+    {
+        "name": "\\App\\ApplicationHealth\\DependencyCheck\\RandomOrgApiCheck\\HealthDependencyRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Kernel\\Exception\\EnvironmentVariableNotSet",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\RuntimeException",
         "size": 3000,
         "relations": []
     },
@@ -276,7 +332,8 @@
         "relations": [
             "\\Symfony\\Component\\HttpKernel\\Kernel",
             "\\Tests\\Utils\\Constants",
-            "\\RuntimeException"
+            "\\App\\Kernel\\Exception\\EnvironmentVariableNotSet",
+            "\\Symfony\\Component\\Dotenv\\Dotenv"
         ]
     },
     {
@@ -290,7 +347,95 @@
         "relations": []
     },
     {
-        "name": "\\RuntimeException",
+        "name": "\\Symfony\\Component\\Dotenv\\Dotenv",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\DatabaseCheck\\ReadUserCheck",
+        "size": 3000,
+        "relations": [
+            "\\App\\ApplicationHealth\\DependencyCheck\\DatabaseCheck\\DatabaseUserCheck",
+            "\\Doctrine\\DBAL\\Connection",
+            "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
+            "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus\\SimpleStatus"
+        ]
+    },
+    {
+        "name": "\\Doctrine\\DBAL\\Connection",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\DatabaseCheck\\WriteUserCheck",
+        "size": 3000,
+        "relations": [
+            "\\App\\ApplicationHealth\\DependencyCheck\\DatabaseCheck\\DatabaseUserCheck",
+            "\\Doctrine\\DBAL\\Connection",
+            "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
+            "\\DateTimeImmutable",
+            "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus\\SimpleStatus"
+        ]
+    },
+    {
+        "name": "\\DateTimeImmutable",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\Exception\\ResponseNotOk",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\ApplicationHealth\\DependencyCheck\\RandomOrgApiCheck\\Exception\\HealthDependencyException",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\Exception\\SymfonyHttpException",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Contracts\\HttpClient\\Exception\\ExceptionInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\Exception\\UnknownApiException",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Throwable",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\RandomOrgCheck\\RandomApiHealth",
+        "size": 3000,
+        "relations": [
+            "\\App\\ApplicationHealth\\DependencyCheck\\RandomOrgApiCheck\\HealthDependencyRepository",
+            "\\Symfony\\Contracts\\HttpClient\\HttpClientInterface",
+            "\\App\\Repository\\Exception\\SymfonyHttpException",
+            "\\App\\Repository\\Exception\\UnknownApiException",
+            "\\Symfony\\Contracts\\HttpClient\\ResponseInterface",
+            "\\App\\Repository\\Exception\\ResponseNotOk"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Contracts\\HttpClient\\HttpClientInterface",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Contracts\\HttpClient\\ResponseInterface",
         "size": 3000,
         "relations": []
     },
@@ -348,27 +493,12 @@
         "relations": []
     },
     {
-        "name": "\\Ds\\Set",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport",
         "size": 3000,
         "relations": []
     },
     {
-        "name": "\\Generator",
-        "size": 3000,
-        "relations": []
-    },
-    {
         "name": "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\Exception\\NoDependencyStatuses",
-        "size": 3000,
-        "relations": []
-    },
-    {
-        "name": "\\InvalidArgumentException",
         "size": 3000,
         "relations": []
     },
@@ -382,6 +512,7 @@
             "\\Cushon\\HealthBundle\\Console\\Factory\\ResultFormatterFactory",
             "\\Symfony\\Component\\Console\\Input\\InputInterface",
             "\\Symfony\\Component\\Console\\Output\\OutputInterface",
+            "\\Cushon\\HealthBundle\\Console\\Exception\\HealthConsole",
             "\\Cushon\\HealthBundle\\Formatter\\Console"
         ]
     },
@@ -416,7 +547,21 @@
         "relations": []
     },
     {
+        "name": "\\Cushon\\HealthBundle\\Console\\Exception\\HealthConsole",
+        "size": 3000,
+        "relations": [
+            "\\RuntimeException",
+            "\\Cushon\\HealthBundle\\Exception\\HealthError",
+            "\\Throwable"
+        ]
+    },
+    {
         "name": "\\Cushon\\HealthBundle\\Formatter\\Console",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Cushon\\HealthBundle\\Exception\\HealthError",
         "size": 3000,
         "relations": []
     },
@@ -458,6 +603,36 @@
         "name": "\\Symfony\\Component\\Console\\Style\\SymfonyStyle",
         "size": 3000,
         "relations": []
+    },
+    {
+        "name": "\\Cushon\\HealthBundle\\Controller\\CheckHealth",
+        "size": 3000,
+        "relations": [
+            "\\Cushon\\HealthBundle\\QueryBus\\HealthCheckQueryBus",
+            "\\Cushon\\HealthBundle\\Message\\QueryFactory\\QueryFactory",
+            "\\Cushon\\HealthBundle\\Formatter\\Http",
+            "\\Symfony\\Component\\HttpFoundation\\Response",
+            "\\Cushon\\HealthBundle\\Controller\\Exception\\HealthController"
+        ]
+    },
+    {
+        "name": "\\Cushon\\HealthBundle\\Formatter\\Http",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\Response",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Cushon\\HealthBundle\\Controller\\Exception\\HealthController",
+        "size": 3000,
+        "relations": [
+            "\\RuntimeException",
+            "\\Cushon\\HealthBundle\\Exception\\HealthError",
+            "\\Throwable"
+        ]
     },
     {
         "name": "\\Cushon\\HealthBundle\\CushonHealthBundle",
@@ -600,6 +775,21 @@
             "\\Generator",
             "\\Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus\\SimpleStatus"
         ]
+    },
+    {
+        "name": "\\Cushon\\HealthBundle\\Formatter\\Http\\SimpleJson",
+        "size": 3000,
+        "relations": [
+            "\\Cushon\\HealthBundle\\Formatter\\Http",
+            "\\Cushon\\HealthBundle\\Encoder\\Json\\Encoder",
+            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "\\Cushon\\HealthBundle\\Message\\Result\\HealthCheck"
+        ]
+    },
+    {
+        "name": "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+        "size": 3000,
+        "relations": []
     },
     {
         "name": "\\Cushon\\HealthBundle\\Handler\\CheckHealth\\DefaultHealthCheck",
