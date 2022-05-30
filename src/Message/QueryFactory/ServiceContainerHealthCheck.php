@@ -50,7 +50,7 @@ final class ServiceContainerHealthCheck implements QueryFactory
     /**
      * @param object $query
      * @return void
-     * @psalm-assert HealthCheck $query
+     * @psalm-assert CheckHealth $query
      */
     private function assertHealthCheck(object $query): void
     {

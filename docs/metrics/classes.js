@@ -965,12 +965,12 @@ var classes = [
         "ccn": 1,
         "ccnMethodMax": 1,
         "externals": [
-            "Cushon\\HealthBundle\\Encoder\\Json\\Encoder",
-            "Ergebnis\\Json\\Printer\\PrinterInterface"
+            "Cushon\\HealthBundle\\Encoder\\SimpleJson\\Encoder",
+            "Ergebnis\\SimpleJson\\Printer\\PrinterInterface"
         ],
         "parents": [],
         "implements": [
-            "Cushon\\HealthBundle\\Encoder\\Json\\Encoder"
+            "Cushon\\HealthBundle\\Encoder\\SimpleJson\\Encoder"
         ],
         "lcom": 1,
         "length": 15,
@@ -999,7 +999,7 @@ var classes = [
         "totalStructuralComplexity": 2,
         "totalDataComplexity": 2.5,
         "totalSystemComplexity": 4.5,
-        "package": "Cushon\\HealthBundle\\Encoder\\Json\\",
+        "package": "Cushon\\HealthBundle\\Encoder\\SimpleJson\\",
         "pageRank": 0.01,
         "afferentCoupling": 0,
         "efferentCoupling": 2,
@@ -1052,7 +1052,7 @@ var classes = [
         "ccnMethodMax": 2,
         "externals": [
             "Cushon\\HealthBundle\\Formatter\\Console\\StyledOutput\\ApplicationStatus",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Symfony\\Component\\Console\\Style\\SymfonyStyle"
         ],
         "parents": [],
@@ -1231,12 +1231,12 @@ var classes = [
         "externals": [
             "Cushon\\HealthBundle\\Formatter\\Console\\StyledOutput\\Dependency\\Mapper",
             "Generator",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Symfony\\Component\\Console\\Helper\\TableCell",
             "Symfony\\Component\\Console\\Helper\\TableCellStyle",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Symfony\\Component\\Console\\Helper\\TableCellStyle",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck"
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth"
         ],
         "parents": [],
         "implements": [],
@@ -1322,11 +1322,11 @@ var classes = [
             "Cushon\\HealthBundle\\Formatter\\Console\\StyledOutput\\Dependency",
             "Cushon\\HealthBundle\\Formatter\\Console\\StyledOutput\\Dependency\\DependencyTable\\TableHeaderFactory",
             "Cushon\\HealthBundle\\Formatter\\Console\\StyledOutput\\Dependency\\DependencyTable\\DependencyRowFactory",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Symfony\\Component\\Console\\Style\\SymfonyStyle",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Symfony\\Component\\Console\\Helper\\Table",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Symfony\\Component\\Console\\Helper\\Table"
         ],
         "parents": [],
@@ -1493,7 +1493,7 @@ var classes = [
         "ccnMethodMax": 2,
         "externals": [
             "Cushon\\HealthBundle\\Formatter\\Console\\StyledOutput\\Dependency\\Mapper",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
             "Cushon\\HealthBundle\\Formatter\\Console\\StyledOutput\\Dependency\\Mapper\\Exception\\UnableToMapDependency",
             "Generator",
@@ -1580,9 +1580,9 @@ var classes = [
             "Symfony\\Component\\Console\\Style\\SymfonyStyle",
             "Cushon\\HealthBundle\\Formatter\\Console\\StyledOutput\\ApplicationStatus",
             "Cushon\\HealthBundle\\Formatter\\Console\\StyledOutput\\Dependency",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Symfony\\Component\\Console\\Style\\SymfonyStyle",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck"
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth"
         ],
         "parents": [],
         "implements": [
@@ -1664,8 +1664,8 @@ var classes = [
             "Cushon\\HealthBundle\\ApplicationHealth\\Dependencies",
             "Cushon\\HealthBundle\\Handler\\CheckHealth\\Logger",
             "Cushon\\HealthBundle\\Handler\\CheckHealth\\ResultFactory",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
-            "Cushon\\HealthBundle\\Message\\Query\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
+            "Cushon\\HealthBundle\\Message\\Query\\CheckHealth",
             "Cushon\\HealthBundle\\Handler\\CheckHealth\\Exception\\ApplicationHealthCheckFailure",
             "Cushon\\HealthBundle\\ApplicationHealth\\Exception\\ApplicationHealthError",
             "Cushon\\HealthBundle\\Handler\\CheckHealth\\Exception\\ApplicationHealthCheckFailure"
@@ -1823,9 +1823,9 @@ var classes = [
         "externals": [
             "Cushon\\HealthBundle\\Handler\\CheckHealth\\Logger",
             "Psr\\Log\\LoggerInterface",
-            "Cushon\\HealthBundle\\Encoder\\Json\\Encoder",
-            "Cushon\\HealthBundle\\Message\\Query\\HealthCheck",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Encoder\\SimpleJson\\Encoder",
+            "Cushon\\HealthBundle\\Message\\Query\\CheckHealth",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Cushon\\HealthBundle\\Handler\\CheckHealth\\Exception\\CheckHealthHandlerError"
         ],
         "parents": [],
@@ -1905,14 +1905,14 @@ var classes = [
         "ccnMethodMax": 2,
         "externals": [
             "Cushon\\HealthBundle\\Handler\\CheckHealth\\ResultFactory",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Cushon\\HealthBundle\\ApplicationHealth\\HealthReport",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck\\Healthy",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth\\Healthy",
             "Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck\\Healthy",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck\\Unhealthy",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth\\Healthy",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth\\Unhealthy",
             "Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck\\Unhealthy"
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth\\Unhealthy"
         ],
         "parents": [],
         "implements": [
@@ -1968,11 +1968,11 @@ var classes = [
         "ccn": 1,
         "ccnMethodMax": 0,
         "externals": [
-            "Cushon\\HealthBundle\\Message\\Query\\HealthCheck"
+            "Cushon\\HealthBundle\\Message\\Query\\CheckHealth"
         ],
         "parents": [],
         "implements": [
-            "Cushon\\HealthBundle\\Message\\Query\\HealthCheck"
+            "Cushon\\HealthBundle\\Message\\Query\\CheckHealth"
         ],
         "lcom": 0,
         "length": 0,
@@ -2001,7 +2001,7 @@ var classes = [
         "totalStructuralComplexity": 0,
         "totalDataComplexity": 0,
         "totalSystemComplexity": 0,
-        "package": "Cushon\\HealthBundle\\Message\\Query\\HealthCheck\\",
+        "package": "Cushon\\HealthBundle\\Message\\Query\\CheckHealth\\",
         "pageRank": 0.01,
         "afferentCoupling": 0,
         "efferentCoupling": 1,
@@ -2197,7 +2197,7 @@ var classes = [
         "externals": [
             "Cushon\\HealthBundle\\Message\\QueryFactory\\QueryFactory",
             "Symfony\\Component\\DependencyInjection\\ContainerInterface",
-            "Cushon\\HealthBundle\\Message\\Query\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Query\\CheckHealth",
             "Cushon\\HealthBundle\\Message\\QueryFactory\\ServiceContainerHealthCheck\\Exception\\QueryServiceDefinitionNotFound",
             "Cushon\\HealthBundle\\Message\\QueryFactory\\ServiceContainerHealthCheck\\Exception\\IncorrectQueryType"
         ],
@@ -2284,13 +2284,13 @@ var classes = [
         "ccn": 1,
         "ccnMethodMax": 1,
         "externals": [
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
             "Ds\\Set"
         ],
         "parents": [],
         "implements": [
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck"
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth"
         ],
         "lcom": 4,
         "length": 8,
@@ -2319,7 +2319,7 @@ var classes = [
         "totalStructuralComplexity": 4,
         "totalDataComplexity": 6.5,
         "totalSystemComplexity": 10.5,
-        "package": "Cushon\\HealthBundle\\Message\\Result\\HealthCheck\\",
+        "package": "Cushon\\HealthBundle\\Message\\Result\\CheckHealth\\",
         "pageRank": 0.01,
         "afferentCoupling": 1,
         "efferentCoupling": 3,
@@ -2371,13 +2371,13 @@ var classes = [
         "ccn": 1,
         "ccnMethodMax": 1,
         "externals": [
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
             "Cushon\\HealthBundle\\ApplicationHealth\\HealthReport\\DependencyStatus",
             "Ds\\Set"
         ],
         "parents": [],
         "implements": [
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck"
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth"
         ],
         "lcom": 4,
         "length": 8,
@@ -2406,7 +2406,7 @@ var classes = [
         "totalStructuralComplexity": 4,
         "totalDataComplexity": 6.5,
         "totalSystemComplexity": 10.5,
-        "package": "Cushon\\HealthBundle\\Message\\Result\\HealthCheck\\",
+        "package": "Cushon\\HealthBundle\\Message\\Result\\CheckHealth\\",
         "pageRank": 0.01,
         "afferentCoupling": 1,
         "efferentCoupling": 3,
@@ -2717,8 +2717,8 @@ var classes = [
             "Cushon\\HealthBundle\\QueryBus\\HealthCheckQueryBus",
             "Symfony\\Component\\Messenger\\MessageBusInterface",
             "Cushon\\HealthBundle\\QueryBus\\ResultAssertion",
-            "Cushon\\HealthBundle\\Message\\Result\\HealthCheck",
-            "Cushon\\HealthBundle\\Message\\Query\\HealthCheck",
+            "Cushon\\HealthBundle\\Message\\Result\\CheckHealth",
+            "Cushon\\HealthBundle\\Message\\Query\\CheckHealth",
             "Cushon\\HealthBundle\\QueryBus\\Exception\\SymfonyMessengerError",
             "Cushon\\HealthBundle\\QueryBus\\Exception\\ResultAssertionFailed"
         ],
