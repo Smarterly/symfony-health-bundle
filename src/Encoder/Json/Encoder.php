@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Cushon\HealthBundle\Encoder\Json;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface Encoder
 {
     /**

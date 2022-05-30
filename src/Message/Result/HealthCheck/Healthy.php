@@ -9,6 +9,7 @@ use Cushon\HealthBundle\Message\Result\HealthCheck;
 use Cushon\HealthBundle\Message\Result\Traits\DependencyTrait;
 use Cushon\HealthBundle\Message\Result\Traits\JsonSerializableTrait;
 use Ds\Set;
+use Generator;
 
 final class Healthy implements HealthCheck
 {
@@ -25,6 +26,7 @@ final class Healthy implements HealthCheck
 
     /**
      * @return iterable<DependencyStatus>
+     * @psalm-return Generator<int, DependencyStatus, mixed, void>
      */
     public function __invoke(): iterable
     {

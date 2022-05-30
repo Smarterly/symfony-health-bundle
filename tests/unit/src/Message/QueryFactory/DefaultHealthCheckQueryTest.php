@@ -13,6 +13,9 @@ use Prophecy\PhpUnit\ProphecyTrait;
 use stdClass;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class DefaultHealthCheckQueryTest extends TestCase
 {
     use ProphecyTrait;

@@ -12,6 +12,10 @@ services:
       APP_CACHE_DIR: '/cache'
       APP_LOG_DIR: '/cushon/build/logs/symfony'
       APP_ENV: "${APP_ENV}"
+      DB_READ_HOST: 'db'
+      DB_WRITE_HOST: 'db'
+      DB_WRITE_PORT: 3306
+      DB_READ_PORT: 3306
     restart: unless-stopped
     volumes:
       - ./:/cushon
@@ -29,6 +33,19 @@ services:
     restart: unless-stopped
     ports:
       - "${HOST_NGINX_PORT:?err}:${NGINX_PORT:-8080}"
+  db:
+    image: mariadb:10.7.3-focal
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "lets_all_stay_healthy"
+    networks:
+      - app
+    volumes:
+      - db-data:/var/lib/mysql:rw
+      # This inserts the read and write users for the Symfony app
+      - ./app/data:/docker-entrypoint-initdb.d
+    ports:
+      - '33010:3306'
   blackfire:
     image: blackfire/blackfire:2
     ports: [ "8307" ]
@@ -41,20 +58,6 @@ services:
       BLACKFIRE_DISABLE_LEGACY_PORT: 'true'
     networks:
       - app
-
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-13}-alpine
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe}
-      POSTGRES_USER: ${POSTGRES_USER:-symfony}
-    volumes:
-      - db-data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
 networks:
   app:
 

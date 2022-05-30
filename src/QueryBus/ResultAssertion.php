@@ -6,6 +6,9 @@ namespace Cushon\HealthBundle\QueryBus;
 
 use Cushon\HealthBundle\QueryBus\ResultAssertion\Exception\AssertionError;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface ResultAssertion
 {
     /**

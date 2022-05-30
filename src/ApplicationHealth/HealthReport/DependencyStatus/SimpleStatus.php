@@ -6,6 +6,9 @@ namespace Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SimpleStatus implements DependencyStatus
 {
     public const KEY_INFO = 'info';

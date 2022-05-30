@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\QueryBus\Exception;
 use Cushon\HealthBundle\QueryBus\ResultAssertion\Exception\AssertionError;
 use RuntimeException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class ResultAssertionFailed extends RuntimeException implements QueryBusError
 {
     /**

@@ -9,6 +9,9 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class QueryServiceDefinitionNotFoundTest extends TestCase
 {
     use ProphecyTrait;

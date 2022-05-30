@@ -10,6 +10,9 @@ use Generator;
 use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Helper\TableCellStyle;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class DependencyRowFactory
 {
     public const DEFAULT_COLOUR_HEALTHY = 'green';

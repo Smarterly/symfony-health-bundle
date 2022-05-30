@@ -12,6 +12,9 @@ use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class CushonHealthBundleTest extends TestCase
 {
     use ProphecyTrait;

@@ -14,6 +14,9 @@ use Prophecy\PhpUnit\ProphecyTrait;
 use stdClass;
 use Symfony\Component\Messenger\MessageBusInterface;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class DefaultAssertionTest extends TestCase
 {
     use ProphecyTrait;

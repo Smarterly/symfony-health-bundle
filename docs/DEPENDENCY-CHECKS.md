@@ -36,8 +36,194 @@ All Dependency Checks should implement the interface `Cushon\HealthBundle\Applic
 
 #### A Database Dependency Check Using Doctrine
 
-In this example, we use the well-known Doctrine Database Abstraction Layer (DBAL) to test that all the users can read and write to the database as required. This example requires the Doctrine migrations to be run before it will behave as expected.
+In this example, we use the well-known Doctrine Database Abstraction Layer (DBAL) to test that all the users can read and write to the database as required. This example requires the Doctrine migrations to be run before it will behave as expected. You should also bring up the docker services, which will populate an empty schema and two users (read and write) for you:
+```bash
+> make up
+Bringing up services...
+Creating network "cushon-health-bundle_app" with the default driver
+Creating cushon-health-bundle_nginx_1     ... done
+Creating cushon-health-bundle_bundle_1    ... done
+Creating cushon-health-bundle_db_1        ... done
+Creating cushon-health-bundle_blackfire_1 ... done
 
+> app/bin/console doctrine:migrations:migrate
+WARNING! You are about to execute a migration in database "cushon_health_test" that could result in schema changes and data loss. Are you sure you wish to continue? (yes/no) [yes]:
+> y
+
+[notice] Migrating up to App\DoctrineMigrations\Version20220530155854
+[notice] finished in 77.9ms, used 16M memory, 1 migrations executed, 1 sql queries
+```
+The above creates a very simple table called `health` with one column `last_checked`. Obviously, the read and write user should be the same users used for core application functionality, or you may miss that there actually is a problem.
+
+Using Symfony's autwiring and the Symfony Doctrine bundle, let's create a simple configuration in `doctrine.yaml`:
+
+```yaml
+---
+parameters:
+  env(DB_READ_HOST):      '127.0.0.1'
+  env(DB_READ_NAME):      'cushon_health_test'
+  env(DB_READ_USER):      'cushon_read'
+  env(DB_READ_VERSION):   'mariadb-10.7.3'
+  env(DB_READ_PORT):      33010
+
+  env(DB_WRITE_HOST):     '127.0.0.1'
+  env(DB_WRITE_NAME):     'cushon_health_test'
+  env(DB_WRITE_USER):     'cushon_write'
+  env(DB_WRITE_VERSION):  'mariadb-10.7.3'
+  env(DB_WRITE_PORT):     33010 
+
+doctrine:
+  dbal:
+    default_connection: 'read'
+    connections:
+      read:
+        # Connection used for read operations
+        host:             '%env(string:DB_READ_HOST)%'
+        dbname:           '%env(string:DB_READ_NAME)%'
+        user:             '%env(string:DB_READ_USER)%'
+        password:         '%env(string:DB_READ_PASSWORD)%'
+        server_version:   '%env(string:DB_READ_VERSION)%'
+        port:             '%env(int:DB_READ_PORT)%'
+        driver:           'pdo_mysql'
+
+      write:
+        # Connection used for write operations
+        host:             '%env(string:DB_WRITE_HOST)%'
+        dbname:           '%env(string:DB_WRITE_NAME)%'
+        user:             '%env(string:DB_WRITE_USER)%'
+        password:         '%env(string:DB_WRITE_PASSWORD)%'
+        server_version:   '%env(string:DB_WRITE_VERSION)%'
+        port:             '%env(int:DB_WRITE_PORT)%'
+        driver:           'pdo_mysql'
+```
+Here we use environmentals to keep it inline with the 12-Factor Application principle, but add some sensible defaults to the environment variables.
+
+Next, we create two very simple wrappers to test the connections:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Repository\DatabaseCheck;
+
+use App\ApplicationHealth\DependencyCheck\DatabaseCheck\DatabaseUserCheck;
+use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
+use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus\SimpleStatus;
+use DateTimeImmutable;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception;
+use Doctrine\DBAL\Types\Types;
+
+final class WriteUserCheck implements DatabaseUserCheck
+{
+    /**
+     * @var Connection
+     */
+    private Connection $connection;
+
+    /**
+     * @param Connection $writeConnection
+     */
+    public function __construct(Connection $writeConnection)
+    {
+        $this->connection = $writeConnection;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function checkUser(): DependencyStatus
+    {
+        $health = false;
+        try {
+            $this->connection->createQueryBuilder()
+                ->insert('health')
+                ->setValue('last_checked', ':now')
+                ->setParameter('now', new DateTimeImmutable(), Types::DATETIME_IMMUTABLE)
+                ->executeStatement();
+            $health = true;
+            $info = null;
+        } catch (Exception $e) {
+            $info = $e->getMessage();
+        }
+
+        return new SimpleStatus('DB write user', $health, $info);
+    }
+}
+```
+We will skip the example of the read user check for the sake of keeping this example less verbose,but the class exists in the example app.
+
+Next, we tag all the repositories implementing the `DatabaseUserCheck` interface, so we can easily pass them to our database check. Updating our `services.yaml` with an `_instanceof` service definition:
+
+```yaml
+  _instanceof:
+      App\ApplicationHealth\DependencyCheck\DatabaseCheck\DatabaseUserCheck:
+          tags:
+              - 'app.health.check.db'
+
+  App\ApplicationHealth\DependencyCheck\DatabaseCheck:
+      arguments:
+          - !tagged_iterator app.health.check.db
+```
+Our CQRS-style health check can now be fairly straightforward. We add a few guards to ensure that it must have at least one database check in the constructor:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\ApplicationHealth\DependencyCheck;
+
+use App\ApplicationHealth\DependencyCheck\DatabaseCheck\DatabaseUserCheck;
+use App\ApplicationHealth\DependencyCheck\DatabaseCheck\Exception\NoDatabaseChecksProvided;
+use Cushon\HealthBundle\ApplicationHealth\DependencyCheck;
+use Ds\Set;
+use Generator;
+
+final class DatabaseCheck implements DependencyCheck
+{
+    /**
+     * @var Set<DatabaseUserCheck>
+     */
+    private Set $dependencyRepositories;
+
+    /**
+     * @param iterable<DatabaseUserCheck> $dependencyRepositories
+     */
+    public function __construct(iterable $dependencyRepositories)
+    {
+        $this->dependencyRepositories = new Set();
+        foreach ($dependencyRepositories as $dependencyRepository) {
+            $this->addDatabaseUserCheck($dependencyRepository);
+        }
+
+        if (!$this->dependencyRepositories->count()) {
+            throw NoDatabaseChecksProvided::create();
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function check(): Generator
+    {
+        foreach ($this->dependencyRepositories as $dependencyRepository) {
+            yield $dependencyRepository->checkUser();
+        }
+    }
+
+    /**
+     * @param DatabaseUserCheck $databaseUserChecks
+     * @return void
+     */
+    private function addDatabaseUserCheck(DatabaseUserCheck $databaseUserChecks): void
+    {
+        $this->dependencyRepositories->add($databaseUserChecks);
+    }
+}
+
+```
 
 
 

@@ -11,6 +11,9 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\Console\Helper\TableCell;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class TableHeaderFactoryTest extends TestCase
 {
     use ProphecyTrait;

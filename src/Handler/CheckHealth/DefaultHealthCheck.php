@@ -11,6 +11,9 @@ use Cushon\HealthBundle\Handler\CheckHealth\Exception\ApplicationHealthCheckFail
 use Cushon\HealthBundle\Message\Query\HealthCheck as HealthCheckQuery;
 use Cushon\HealthBundle\Message\Result\HealthCheck as HealthCheckResult;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class DefaultHealthCheck implements CheckHealth
 {
     private Dependencies $dependencies;

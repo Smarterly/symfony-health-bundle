@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\QueryBus\ResultAssertion\Exception;
 use Cushon\HealthBundle\QueryBus\Exception\QueryBusError;
 use RuntimeException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class UnexpectedResultType extends RuntimeException implements AssertionError
 {
     private mixed $result;

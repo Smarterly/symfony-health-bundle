@@ -6,6 +6,9 @@ namespace Cushon\HealthBundle\ApplicationHealth;
 
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface HealthReport
 {
     /**

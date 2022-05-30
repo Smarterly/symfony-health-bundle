@@ -14,11 +14,11 @@ use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Helper\TableCellStyle;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class StyledOutput implements Console
 {
-    public const STATUS_HEALTHY = 'Healthy';
-    public const STATUS_UNHEALTHY = 'Unhealthy';
-
     private SymfonyStyle $styler;
     private Dependency $dependencyFormatter;
     private ApplicationStatus $applicationStatusFormatter;

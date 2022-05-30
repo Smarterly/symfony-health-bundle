@@ -72,9 +72,10 @@ final class SimpleMapper implements Mapper
      * @param string $name
      * @param string $health
      * @param string $info
-     * @return iterable<string, string>
+     * @return Generator
+     * @psalm-return Generator<'health'|'info'|'name', string, mixed, void>
      */
-    private function yieldMap(string $name, string $health, string $info): iterable
+    private function yieldMap(string $name, string $health, string $info): Generator
     {
         yield self::KEY_NAME => $name;
         yield self::KEY_HEALTH => $health;

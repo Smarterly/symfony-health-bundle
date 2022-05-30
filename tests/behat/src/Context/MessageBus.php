@@ -15,6 +15,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Tests\Behat\Context\Traits\ProphecyContextTrait;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class MessageBus implements Context
 {
     use ProphecyContextTrait;

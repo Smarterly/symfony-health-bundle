@@ -6,6 +6,9 @@ namespace Cushon\HealthBundle\Formatter;
 
 use Cushon\HealthBundle\Message\Result\HealthCheck;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface Console
 {
     /**

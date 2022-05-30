@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\Formatter\Console\StyledOutput;
 use Cushon\HealthBundle\Message\Result\HealthCheck;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface Dependency
 {
     public const STATUS_HEALTHY = 'Healthy';

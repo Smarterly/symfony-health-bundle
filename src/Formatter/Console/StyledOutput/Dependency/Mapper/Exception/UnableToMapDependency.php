@@ -8,6 +8,9 @@ use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use Cushon\HealthBundle\Formatter\Console\StyledOutput\Dependency\Mapper;
 use InvalidArgumentException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class UnableToMapDependency extends InvalidArgumentException
 {
     /**

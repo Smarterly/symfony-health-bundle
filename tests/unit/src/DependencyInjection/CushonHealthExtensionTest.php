@@ -16,6 +16,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Filesystem\Filesystem;
 use Tests\Utils\Constants;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class CushonHealthExtensionTest extends TestCase
 {
     use ProphecyTrait;

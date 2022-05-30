@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\QueryBus\ResultAssertion\Exception;
 use Cushon\HealthBundle\QueryBus\Exception\QueryBusError;
 use InvalidArgumentException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class ResultClassOrInterfaceNotFound extends InvalidArgumentException implements AssertionError
 {
     /**

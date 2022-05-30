@@ -10,6 +10,9 @@ use Cushon\HealthBundle\ApplicationHealth\HealthReport\SimpleHealthReport;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SimpleHealthReportTest extends TestCase
 {
     use ProphecyTrait;

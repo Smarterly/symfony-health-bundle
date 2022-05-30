@@ -15,6 +15,9 @@ use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Tester\TesterTrait;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class StyledOutputFactoryTest extends TestCase
 {
     use ProphecyTrait;

@@ -8,6 +8,9 @@ use Cushon\HealthBundle\QueryBus\Exception\SymfonyMessengerError;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Exception\LogicException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SymfonyMessengerErrorTest extends TestCase
 {
     public function testItReturnsAZeroidErrorCode(): void

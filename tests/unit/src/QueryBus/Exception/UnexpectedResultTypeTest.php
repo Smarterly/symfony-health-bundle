@@ -8,6 +8,9 @@ use Cushon\HealthBundle\QueryBus\ResultAssertion\Exception\UnexpectedResultType;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class UnexpectedResultTypeTest extends TestCase
 {
     public function testItHasTheResult(): void

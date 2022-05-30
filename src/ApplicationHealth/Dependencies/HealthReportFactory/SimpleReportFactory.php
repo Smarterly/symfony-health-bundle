@@ -8,6 +8,9 @@ use Cushon\HealthBundle\ApplicationHealth\Dependencies\Simpledependencies\Health
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\SimpleHealthReport;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SimpleReportFactory implements HealthReportFactory
 {
     /**

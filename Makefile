@@ -115,6 +115,7 @@ craft: .craft test quality
 
 console: .composer-console
 
+health: APP_ENV = prod
 health: .composer-health
 
 brew:

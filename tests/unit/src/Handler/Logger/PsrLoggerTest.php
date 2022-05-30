@@ -17,6 +17,9 @@ use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class PsrLoggerTest extends TestCase
 {
     use ProphecyTrait;

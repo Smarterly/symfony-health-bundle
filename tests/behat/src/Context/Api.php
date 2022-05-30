@@ -7,6 +7,9 @@ namespace Tests\Behat\Context;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Tester\Exception\PendingException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class Api implements Context
 {
     /**

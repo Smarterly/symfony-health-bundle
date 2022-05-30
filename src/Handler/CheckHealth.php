@@ -9,6 +9,9 @@ use Cushon\HealthBundle\Message\Query\HealthCheck as HealthCheckQuery;
 use Cushon\HealthBundle\Message\Result\HealthCheck as HealthCheckResult;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface CheckHealth extends MessageHandlerInterface
 {
     /**

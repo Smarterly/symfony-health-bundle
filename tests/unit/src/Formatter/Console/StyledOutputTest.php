@@ -18,6 +18,9 @@ use Prophecy\PhpUnit\ProphecyTrait;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Tester\TesterTrait;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class StyledOutputTest extends TestCase
 {
     use ProphecyTrait;

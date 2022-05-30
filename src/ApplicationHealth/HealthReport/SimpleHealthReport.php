@@ -8,6 +8,9 @@ use Cushon\HealthBundle\ApplicationHealth\HealthReport;
 use Ds\Set;
 use Generator;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SimpleHealthReport implements HealthReport
 {
     private bool $healthy;

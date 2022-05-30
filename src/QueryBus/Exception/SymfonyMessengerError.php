@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\QueryBus\Exception;
 use RuntimeException;
 use Symfony\Component\Messenger\Exception\ExceptionInterface;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SymfonyMessengerError extends RuntimeException implements QueryBusError
 {
     /**

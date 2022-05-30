@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\ApplicationHealth\Dependencies\Simpledependencies;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface HealthReportFactory
 {
     /**

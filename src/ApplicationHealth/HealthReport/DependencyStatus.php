@@ -6,6 +6,9 @@ namespace Cushon\HealthBundle\ApplicationHealth\HealthReport;
 
 use JsonSerializable;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface DependencyStatus extends JsonSerializable
 {
     public const KEY_NAME = 'name';

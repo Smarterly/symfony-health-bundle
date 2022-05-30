@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Repository;
+namespace App\Repository\RandomOrgCheck;
 
 use App\ApplicationHealth\DependencyCheck\RandomOrgApiCheck\HealthDependencyRepository;
 use App\Repository\Exception\ResponseNotOk;

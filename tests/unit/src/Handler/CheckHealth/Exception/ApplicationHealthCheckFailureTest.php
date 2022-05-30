@@ -9,6 +9,9 @@ use Cushon\HealthBundle\Handler\CheckHealth\Exception\ApplicationHealthCheckFail
 use Exception;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class ApplicationHealthCheckFailureTest extends TestCase
 {
     public function testItReturnsAZeroidErrorCode(): void

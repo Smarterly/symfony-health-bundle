@@ -13,6 +13,9 @@ use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use Ds\Set;
 use Generator;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SimpleDependencies implements Dependencies
 {
     /**
