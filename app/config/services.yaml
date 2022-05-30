@@ -5,6 +5,9 @@
 # Put parameters here that don't need to change on each machine where the bundle is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+  env(NULL_DEPENDENCY_NAME): 'Some dependency'
+  app.app_health.null_dependency.name: '%env(string:NULL_DEPENDENCY_NAME)%'
+  app.app_health.null_dependency.health: true
 
 services:
   # default configuration for services in *this* file
@@ -23,6 +26,6 @@ services:
   # please note that last definitions always *replace* previous ones
   App\ApplicationHealth\DependencyCheck\NullDependencyCheck:
     arguments:
-      $name: 'Null dependency'
-      $health: true
+      $name: '%app.app_health.null_dependency.name%'
+      $health: '%app.app_health.null_dependency.health%'
       $info: 'Some info about the fake dependency'

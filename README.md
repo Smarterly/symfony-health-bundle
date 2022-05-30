@@ -67,7 +67,6 @@ Additionally, files to run testing and quality tooling (e.g. `infection.json`, `
 ## Testing & Quality
 The bundle is tested with both unit testing and behavioural testing with [phpUnit][phpunit] and [behat][behat] respectively.
 
-***
 [![GitHub issues](https://img.shields.io/github/issues/Smarterly/symfony-health-bundle.svg)](https://github.com/Smarterly/symfony-health-bundle/issues)
 [![Coverage Status](https://coveralls.io/repos/github/Smarterly/symfony-health-bundle/badge.svg?branch=main)](https://coveralls.io/github/Smarterly/symfony-health-bundle?branch=main)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Smarterly_symfony-health-bundle&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Smarterly_symfony-health-bundle)

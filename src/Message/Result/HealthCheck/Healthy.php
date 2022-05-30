@@ -31,7 +31,6 @@ final class Healthy implements HealthCheck
         return $this->dependencies();
     }
 
-
     /**
      * @inheritDoc
      */

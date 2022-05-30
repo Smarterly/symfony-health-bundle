@@ -22,8 +22,11 @@ final class DefaultHealthCheck implements CheckHealth
      * @param Logger $logger
      * @param ResultFactory $resultFactory
      */
-    public function __construct(Dependencies $dependencies, Logger $logger, ResultFactory $resultFactory)
-    {
+    public function __construct(
+        Dependencies $dependencies,
+        Logger $logger,
+        ResultFactory $resultFactory
+    ) {
         $this->dependencies = $dependencies;
         $this->logger = $logger;
         $this->resultFactory = $resultFactory;
