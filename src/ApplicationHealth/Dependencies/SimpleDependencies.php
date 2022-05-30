@@ -72,7 +72,7 @@ final class SimpleDependencies implements Dependencies
     private function checkDependencies(): Generator
     {
         foreach ($this->dependencyChecks as $dependencyCheck) {
-            yield $dependencyCheck->check();
+            yield from $dependencyCheck->check();
         }
     }
 }

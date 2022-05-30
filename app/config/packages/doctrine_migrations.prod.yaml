@@ -1,0 +1,8 @@
+---
+doctrine_migrations:
+  connection: 'write'
+  migrations_paths:
+      # namespace is arbitrary but should be different from App\Migrations
+      # as migrations classes should NOT be autoloaded
+      'Example\DoctrineMigrations': '%kernel.project_dir%/migrations'
+  enable_profiler: '%kernel.debug%'

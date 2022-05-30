@@ -4,8 +4,9 @@ services:
     autowire: true
     autoconfigure: true
 
-  # Disable the example Null Dependency Check in test
-  App\ApplicationHealth\DependencyCheck\NullDepdencyCheck:
+  # Disable the example Dependency Checks in test
+  App\ApplicationHealth\DependencyCheck\:
+    resource: '%kernel.project_dir%/src/ApplicationHealth/DependencyCheck/'
     autowire: false
     autoconfigure: false
 

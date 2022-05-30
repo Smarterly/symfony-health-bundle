@@ -45,6 +45,9 @@
   "require-dev": {
     "behat/behat": "^3.6",
     "brianium/paratest": "^6.4",
+    "doctrine/dbal": "^3.3",
+    "doctrine/doctrine-bundle": "^2.6",
+    "doctrine/doctrine-migrations-bundle": "^3.2",
     "dvdoug/behat-code-coverage": "^5.2",
     "ergebnis/composer-normalize": "^2.25",
     "friends-of-behat/symfony-extension": "^2.3",

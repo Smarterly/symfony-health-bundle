@@ -9,6 +9,7 @@ use App\ApplicationHealth\DependencyCheck\RandomOrgApiCheck\HealthDependencyRepo
 use Cushon\HealthBundle\ApplicationHealth\DependencyCheck;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus\SimpleStatus;
+use Generator;
 
 final class RandomOrgApiCheck implements DependencyCheck
 {
@@ -22,11 +23,10 @@ final class RandomOrgApiCheck implements DependencyCheck
         $this->healthDependencyRepository = $healthDependencyRepository;
     }
 
-
     /**
-     * @return DependencyStatus
+     * @inheritDoc
      */
-    public function check(): DependencyStatus
+    public function check(): Generator
     {
         $health = false;
 
@@ -38,6 +38,6 @@ final class RandomOrgApiCheck implements DependencyCheck
             $info = $e->getMessage();
         }
 
-        return new SimpleStatus('random.org', $health, $info);
+        yield new SimpleStatus('random.org', $health, $info);
     }
 }

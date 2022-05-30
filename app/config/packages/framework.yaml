@@ -16,12 +16,13 @@ framework:
   #fragments: true
   php_errors:
     log: true
-
-  http_client:
-    # https://www.random.org/integers/?num=10&min=1&max=6&col=1&base=10&format=plain&rnd=new
-    scoped_clients:
-      random.client:
-        base_uri: 'https://www.random.org'
+when@prod: &prod
+  framework:
+    http_client:
+      # https://www.random.org/integers/?num=10&min=1&max=6&col=1&base=10&format=plain&rnd=new
+      scoped_clients:
+        random.client:
+          base_uri: 'https://www.random.org'
 
 when@test:
   framework:

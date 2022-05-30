@@ -3,8 +3,8 @@
 namespace App;
 
 use App\Kernel\Exception\EnvironmentVariableNotSet;
-use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Tests\Utils\Constants;
 
@@ -23,14 +23,6 @@ class Kernel extends BaseKernel
     /**
      * @inheritDoc
      */
-    public function getCacheDir(): string
-    {
-        return $this->getEnvVar('APP_CACHE_DIR');
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function getLogDir(): string
     {
         return $this->getEnvVar('APP_LOG_DIR');
@@ -42,10 +34,16 @@ class Kernel extends BaseKernel
      */
     private function getEnvVar(string $varName): string
     {
-        if (!$var = getenv($varName)) {
+        $this->bootEnv();
+        if (!$var = $_ENV[$varName]) {
             throw EnvironmentVariableNotSet::fromVarName($varName);
         }
 
         return $var;
+    }
+
+    private function bootEnv(): void
+    {
+        (new Dotenv())->bootEnv(Constants::rootDir() . '/.env');
     }
 }
