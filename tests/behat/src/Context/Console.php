@@ -20,6 +20,7 @@ use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Tests\Behat\Context\Traits\MessageBusInjectionTrait;
 use Tests\Behat\Context\Traits\ProphecyContextTrait;
 
 /**
@@ -28,13 +29,9 @@ use Tests\Behat\Context\Traits\ProphecyContextTrait;
 final class Console implements Context
 {
     use ProphecyContextTrait;
+    use MessageBusInjectionTrait;
 
-    /** @var KernelInterface  */
-    private KernelInterface $kernel;
-
-    private HealthCheckResult $healthCheck;
-
-    private string $display;
+    private ?string $display;
 
     /**
      * @param KernelInterface $kernel
@@ -110,21 +107,5 @@ final class Console implements Context
     public function after(): void
     {
         echo $this->display;
-    }
-
-    /**
-     * @return void
-     */
-    private function injectMessageBusMock(): void
-    {
-        /** @var ContainerBuilder $container */
-        $container = $this->kernel->getContainer();
-
-        $queryBus = $this->prophesize(HealthCheckQueryBus::class);
-        $queryBus->handleHealthCheckQuery(
-            Argument::type(HealthCheck::class)
-        )->willReturn($this->healthCheck);
-
-        $container->set(MessengerHealthQueryBus::class, $queryBus->reveal());
     }
 }

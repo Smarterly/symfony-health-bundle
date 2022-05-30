@@ -1,5 +1,5 @@
 ---
 health:
   path: /health
-  controller: App\Controller\CheckHealth
+  controller: Cushon\HealthBundle\Controller\CheckHealth
   methods:    GET|HEAD

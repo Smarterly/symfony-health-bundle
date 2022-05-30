@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Formatter\Console\Command;
+namespace Tests\Unit\Console\Command;
 
 use Cushon\HealthBundle\Console\Command\CheckHealth;
+use Cushon\HealthBundle\Console\Exception\HealthConsole;
 use Cushon\HealthBundle\Console\Factory\ResultFormatterFactory;
 use Cushon\HealthBundle\Formatter\Console;
 use Cushon\HealthBundle\Message\Query\HealthCheck as HealthCheckQuery;
@@ -14,6 +15,7 @@ use Cushon\HealthBundle\QueryBus\HealthCheckQueryBus;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
+use RuntimeException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -65,5 +67,27 @@ final class CheckHealthTest extends TestCase
         $commandTester = new CommandTester($command);
         $commandTester->execute([]);
         $commandTester->assertCommandIsSuccessful();
+    }
+
+    public function testItThrowsAnExceptionIfTheHealthCheckFails(): void
+    {
+        $quwryBus = $this->prophesize(HealthCheckQueryBus::class);
+        $queryFactory = $this->prophesize(QueryFactory::class);
+        $resultFormatterFactory = $this->prophesize(ResultFormatterFactory::class);
+
+        $exc = new RuntimeException('Test');
+
+        $queryFactory->createQuery()->willThrow($exc);
+
+        $command = new CheckHealth(
+            $quwryBus->reveal(),
+            $queryFactory->reveal(),
+            $resultFormatterFactory->reveal()
+        );
+
+        $this->expectExceptionObject(HealthConsole::create($exc));
+
+        $commandTester = new CommandTester($command);
+        $commandTester->execute([]);
     }
 }

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://cushon.com/health.json",
+  "type": "object",
+  "title": "Health Report",
+  "required": [
+    "name",
+    "healthy",
+    "dependencies"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Application Name",
+      "examples": [
+        "cushon:pensions"
+      ]
+    },
+    "healthy": {
+      "type": "boolean",
+      "default": false,
+      "title": "Application Status",
+      "examples": [
+        false
+      ]
+    },
+    "dependencies": {
+      "type": "array",
+      "default": [],
+      "title": "Application Dependencies",
+      "items": {
+        "type": "object",
+        "title": "Dependency",
+        "required": [
+          "name",
+          "healthy",
+          "info"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Dependency Name",
+            "examples": [
+              "db write user",
+              "db read user"
+            ]
+          },
+          "healthy": {
+            "type": "boolean",
+            "title": "Dependency Status",
+            "examples": [
+              false,
+              true
+            ]
+          },
+          "info": {
+            "type": [
+              "string",
+              "object",
+              "null"
+            ],
+            "title": "Dependency Info",
+            "examples": [
+              "Unable to access database",
+              null
+            ]
+          }
+        },
+        "examples": [{
+          "name": "db write user",
+          "healthy": false,
+          "info": "Unable to access database"
+        },
+          {
+            "name": "db read user",
+            "healthy": true,
+            "info": null
+          }]
+      },
+      "examples": [
+        [{
+          "name": "db write user",
+          "healthy": false,
+          "info": "Unable to access database"
+        },
+          {
+            "name": "db read user",
+            "healthy": true,
+            "info": null
+          }]
+      ]
+    }
+  },
+  "examples": [{
+    "name": "cushon:fake_app",
+    "healthy": false,
+    "dependencies": [{
+      "name": "db write user",
+      "healthy": false,
+      "info": "Unable to access database"
+    },
+      {
+        "name": "db read user",
+        "healthy": true,
+        "info": null
+      }]
+  }]
+}

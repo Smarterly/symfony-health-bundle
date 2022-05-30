@@ -15,6 +15,11 @@ default:
         - "%paths.base%/features/application_health.feature"
       contexts:
         - Tests\Behat\Context\Console
+    api:
+      paths:
+        - "%paths.base%/features/application_health.feature"
+      contexts:
+        - Tests\Behat\Context\Api
 
   extensions:
     FriendsOfBehat\SymfonyExtension:
