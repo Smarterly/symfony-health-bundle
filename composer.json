@@ -24,11 +24,11 @@
       "homepage": "https://cushon.co.uk",
       "role": "Software Engineer"
     },
-      {
-          "name": "Doug Ogisi",
-          "homepage": "https://cushon.co.uk",
-          "role": "Software Engineering Manager"
-      }
+    {
+      "name": "Doug Ogisi",
+      "homepage": "https://cushon.co.uk",
+      "role": "Software Engineering Manager"
+    }
   ],
   "require": {
     "php": "^8.1",

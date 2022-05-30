@@ -45,7 +45,6 @@ final class RandomApiHealth implements HealthDependencyRepository
                     'query' => $this->getQueryParams(),
                 ]
             );
-
         } catch (ExceptionInterface $e) {
             throw SymfonyHttpException::fromPrevious($e);
         } catch (Throwable $e) {

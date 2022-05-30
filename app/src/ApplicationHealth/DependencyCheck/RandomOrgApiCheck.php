@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\ApplicationHealth\DependencyCheck;
@@ -39,5 +40,4 @@ final class RandomOrgApiCheck implements DependencyCheck
 
         return new SimpleStatus('random.org', $health, $info);
     }
-
 }
