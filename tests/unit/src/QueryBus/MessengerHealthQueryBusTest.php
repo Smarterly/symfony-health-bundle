@@ -20,6 +20,9 @@ use Symfony\Component\Messenger\Exception\LogicException;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class MessengerHealthQueryBusTest extends TestCase
 {
     use ProphecyTrait;

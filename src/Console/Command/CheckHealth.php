@@ -12,7 +12,10 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class CheckHealth extends Command
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
+final class CheckHealth extends Command
 {
     public const DEFAULT_NAME = 'cushon:health';
     public const DEFAULT_DESCRIPTION = 'Console command to initiate an bundle health check';

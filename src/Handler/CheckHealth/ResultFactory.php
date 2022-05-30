@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\Handler\CheckHealth;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport;
 use Cushon\HealthBundle\Message\Result\HealthCheck;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface ResultFactory
 {
     /**

@@ -3,6 +3,7 @@ RUN apk update
 RUN apk add gcc autoconf ca-certificates
 RUN apk add --no-cache --virtual .phpize-deps ${PHPIZE_DEPS}
 RUN pecl install -o -f ds pcov pcntl posix
+RUN docker-php-ext-install pdo_mysql opcache
 RUN docker-php-ext-enable opcache ds pcov
 
 FROM base AS composer

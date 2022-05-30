@@ -14,6 +14,9 @@ use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SimpleDependenciesTest extends TestCase
 {
     use ProphecyTrait;
@@ -35,7 +38,7 @@ final class SimpleDependenciesTest extends TestCase
         /** @var DependencyStatus $status */
         $status = $dependencyStatus->reveal();
 
-        $dependencyChecker->check()->willReturn($status);
+        $dependencyChecker->check()->willYield([$status]);
 
         $healthReport = new HealthReport\SimpleHealthReport(true, $status);
 
@@ -62,8 +65,8 @@ final class SimpleDependenciesTest extends TestCase
         $status1 = $dependencyStatus1->reveal();
         $status2 = $dependencyStatus2->reveal();
 
-        $dependencyChecker1->check()->willReturn($status1);
-        $dependencyChecker2->check()->willReturn($status2);
+        $dependencyChecker1->check()->willYield([$status1]);
+        $dependencyChecker2->check()->willYield([$status2]);
 
         $healthReportFactory = new SimpleReportFactory();
 
@@ -93,8 +96,8 @@ final class SimpleDependenciesTest extends TestCase
         $status1 = $dependencyStatus1->reveal();
         $status2 = $dependencyStatus2->reveal();
 
-        $dependencyChecker1->check()->willReturn($status1);
-        $dependencyChecker2->check()->willReturn($status2);
+        $dependencyChecker1->check()->willYield([$status1]);
+        $dependencyChecker2->check()->willYield([$status2]);
 
         $healthReportFactory = new SimpleReportFactory();
 

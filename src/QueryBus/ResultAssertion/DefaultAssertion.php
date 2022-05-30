@@ -11,6 +11,9 @@ use Cushon\HealthBundle\QueryBus\ResultAssertion\Exception\ResultTypeClassDoesNo
 use Cushon\HealthBundle\QueryBus\ResultAssertion\Exception\UnexpectedResultType;
 use ReflectionClass;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class DefaultAssertion implements ResultAssertion
 {
     private string $classOrInterfaceName;

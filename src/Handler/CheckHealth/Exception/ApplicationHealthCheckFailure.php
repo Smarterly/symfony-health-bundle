@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\Handler\CheckHealth\Exception;
 use Cushon\HealthBundle\ApplicationHealth\Exception\ApplicationHealthError;
 use RuntimeException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class ApplicationHealthCheckFailure extends RuntimeException implements CheckHealthHandlerError
 {
     /**

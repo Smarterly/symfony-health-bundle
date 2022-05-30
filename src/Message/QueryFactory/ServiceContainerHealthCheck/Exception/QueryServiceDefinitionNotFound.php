@@ -8,6 +8,9 @@ use Cushon\HealthBundle\Message\QueryFactory\Exception\QueryFactoryException;
 use RuntimeException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class QueryServiceDefinitionNotFound extends RuntimeException implements QueryFactoryException
 {
     private ContainerInterface $container;

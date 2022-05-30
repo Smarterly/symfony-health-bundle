@@ -8,6 +8,9 @@ use Cushon\HealthBundle\Formatter\Console\StyledOutput\ApplicationStatus;
 use Cushon\HealthBundle\Message\Result\HealthCheck;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class StatusSection implements ApplicationStatus
 {
     public const DEFAULT_HEALTHY = 'Status: %s';

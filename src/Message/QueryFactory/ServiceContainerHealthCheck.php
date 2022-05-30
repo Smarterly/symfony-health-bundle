@@ -9,6 +9,9 @@ use Cushon\HealthBundle\Message\QueryFactory\ServiceContainerHealthCheck\Excepti
 use Cushon\HealthBundle\Message\QueryFactory\ServiceContainerHealthCheck\Exception\QueryServiceDefinitionNotFound;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class ServiceContainerHealthCheck implements QueryFactory
 {
     private ContainerInterface $container;

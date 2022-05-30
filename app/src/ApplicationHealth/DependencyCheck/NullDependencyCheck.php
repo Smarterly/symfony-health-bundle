@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\ApplicationHealth\DependencyCheck;
 
 use Cushon\HealthBundle\ApplicationHealth\DependencyCheck;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
+use Generator;
 
 final class NullDependencyCheck implements DependencyCheck
 {
@@ -27,11 +29,11 @@ final class NullDependencyCheck implements DependencyCheck
     }
 
     /**
-     * @return DependencyStatus
+     * @inheritDoc
      */
-    public function check(): DependencyStatus
+    public function check(): Generator
     {
-        return new DependencyStatus\SimpleStatus(
+        yield new DependencyStatus\SimpleStatus(
             $this->name,
             $this->health,
             $this->info

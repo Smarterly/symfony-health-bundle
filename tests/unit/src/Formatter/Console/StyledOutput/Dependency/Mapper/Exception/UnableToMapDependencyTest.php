@@ -10,6 +10,9 @@ use Cushon\HealthBundle\Formatter\Console\StyledOutput\Dependency\Mapper\Excepti
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class UnableToMapDependencyTest extends TestCase
 {
     use ProphecyTrait;

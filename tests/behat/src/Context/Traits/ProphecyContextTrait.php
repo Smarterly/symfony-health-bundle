@@ -7,6 +7,9 @@ namespace Tests\Behat\Context\Traits;
 use Prophecy\Prophecy\ObjectProphecy;
 use Prophecy\Prophet;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 trait ProphecyContextTrait
 {
     private static ?Prophet $prophet = null;

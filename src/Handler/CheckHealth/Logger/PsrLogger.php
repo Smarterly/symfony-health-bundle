@@ -12,7 +12,10 @@ use Cushon\HealthBundle\Message\Result\HealthCheck as HealthCheckResult;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 
-class PsrLogger implements Logger
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
+final class PsrLogger implements Logger
 {
     public const LOG_CONTEXT_HEALTH = 'health';
     public const LOG_CONTEXT_HANDLER = 'handler';

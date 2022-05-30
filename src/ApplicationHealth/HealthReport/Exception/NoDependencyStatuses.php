@@ -6,6 +6,9 @@ namespace Cushon\HealthBundle\ApplicationHealth\HealthReport\Exception;
 
 use InvalidArgumentException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class NoDependencyStatuses extends InvalidArgumentException
 {
     /**

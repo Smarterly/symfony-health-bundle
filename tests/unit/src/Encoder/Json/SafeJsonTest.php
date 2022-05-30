@@ -12,6 +12,9 @@ use Tests\Utils\Constants;
 use function Safe\file_get_contents;
 use function Safe\json_decode;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SafeJsonTest extends TestCase
 {
     private const ENCODING_FIXTURES_DIR = '/encoding';

@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\Message\Result\Traits;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use Cushon\HealthBundle\Message\Result\HealthCheck;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 trait JsonSerializableTrait
 {
     /**

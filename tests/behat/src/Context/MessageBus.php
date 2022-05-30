@@ -15,6 +15,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Tests\Behat\Context\Traits\ProphecyContextTrait;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class MessageBus implements Context
 {
     use ProphecyContextTrait;
@@ -92,9 +95,9 @@ final class MessageBus implements Context
         $container = $this->kernel->getContainer();
 
         $dependencyCheck1 = $this->prophesize(DependencyCheck::class);
-        $dependencyCheck1->check()->willReturn($simpleStatus1);
+        $dependencyCheck1->check()->willYield([$simpleStatus1]);
         $dependencyCheck2 = $this->prophesize(DependencyCheck::class);
-        $dependencyCheck2->check()->willReturn($simpleStatus2);
+        $dependencyCheck2->check()->willYield([$simpleStatus2]);
 
         $container->set('app.dependency_check1', $dependencyCheck1->reveal());
         $container->set('app.dependency_check2', $dependencyCheck2->reveal());

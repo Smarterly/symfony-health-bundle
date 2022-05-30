@@ -8,6 +8,9 @@ use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use Ds\Set;
 use Generator;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 trait DependencyTrait
 {
     /**

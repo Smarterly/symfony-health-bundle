@@ -11,6 +11,9 @@ use Cushon\HealthBundle\Handler\CheckHealth\Exception\ApplicationHealthCheckFail
 use Cushon\HealthBundle\Message\Query\HealthCheck as HealthCheckQuery;
 use Cushon\HealthBundle\Message\Result\HealthCheck as HealthCheckResult;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class DefaultHealthCheck implements CheckHealth
 {
     private Dependencies $dependencies;
@@ -22,8 +25,11 @@ final class DefaultHealthCheck implements CheckHealth
      * @param Logger $logger
      * @param ResultFactory $resultFactory
      */
-    public function __construct(Dependencies $dependencies, Logger $logger, ResultFactory $resultFactory)
-    {
+    public function __construct(
+        Dependencies $dependencies,
+        Logger $logger,
+        ResultFactory $resultFactory
+    ) {
         $this->dependencies = $dependencies;
         $this->logger = $logger;
         $this->resultFactory = $resultFactory;

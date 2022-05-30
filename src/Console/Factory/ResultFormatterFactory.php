@@ -8,6 +8,9 @@ use Cushon\HealthBundle\Formatter\Console;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface ResultFormatterFactory
 {
     /**

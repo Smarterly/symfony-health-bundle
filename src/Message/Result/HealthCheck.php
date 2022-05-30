@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\Message\Result;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use JsonSerializable;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface HealthCheck extends JsonSerializable
 {
     public const STATUS_HEALTHY = 'healthy';

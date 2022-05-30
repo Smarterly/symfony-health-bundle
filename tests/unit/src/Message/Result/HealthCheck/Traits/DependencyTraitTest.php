@@ -10,6 +10,9 @@ use Ds\Set;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class DependencyTraitTest extends TestCase
 {
     use ProphecyTrait;

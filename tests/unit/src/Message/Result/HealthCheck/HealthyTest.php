@@ -11,6 +11,9 @@ use Prophecy\PhpUnit\ProphecyTrait;
 
 use function Safe\json_encode;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class HealthyTest extends TestCase
 {
     use ProphecyTrait;

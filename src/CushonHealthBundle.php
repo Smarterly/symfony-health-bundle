@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
  * @psalm-suppress PropertyNotSetInConstructor Bundle uses Symfony's ContainerAwareTrait
  */
 final class CushonHealthBundle extends Bundle

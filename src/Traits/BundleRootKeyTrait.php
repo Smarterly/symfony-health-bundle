@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Cushon\HealthBundle\Traits;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 trait BundleRootKeyTrait
 {
     private string $rootKey;

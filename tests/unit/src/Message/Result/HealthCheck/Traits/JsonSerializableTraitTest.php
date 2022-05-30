@@ -15,6 +15,9 @@ use stdClass;
 use function Safe\json_decode;
 use function Safe\json_encode;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class JsonSerializableTraitTest extends TestCase
 {
     use ProphecyTrait;

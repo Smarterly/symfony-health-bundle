@@ -13,6 +13,9 @@ use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use Ds\Set;
 use Generator;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class SimpleDependencies implements Dependencies
 {
     /**
@@ -72,7 +75,7 @@ final class SimpleDependencies implements Dependencies
     private function checkDependencies(): Generator
     {
         foreach ($this->dependencyChecks as $dependencyCheck) {
-            yield $dependencyCheck->check();
+            yield from $dependencyCheck->check();
         }
     }
 }

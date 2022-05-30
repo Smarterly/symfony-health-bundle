@@ -11,10 +11,13 @@ use Cushon\HealthBundle\Message\Result\HealthCheck;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class DependencyTable implements Dependency
 {
-    private DependencyTable\TableHeaderFactory $tableHeaderFactory;
-    private DependencyTable\DependencyRowFactory $dependencyRowFactory;
+    private TableHeaderFactory $tableHeaderFactory;
+    private DependencyRowFactory $dependencyRowFactory;
 
     public function __construct(
         TableHeaderFactory $tableHeaderFactory,

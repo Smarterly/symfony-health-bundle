@@ -1,16 +1,9 @@
 <?php
 
-declare(strict_types=1);
-
-use Cushon\HealthBundle\CushonHealthBundle;
-use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
-use FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle;
-
 return [
-    FrameworkBundle::class => ['all' => true],
-    FriendsOfBehatSymfonyExtensionBundle::class => [
-        'test' => true,
-        'dev' => true,
-    ],
-    CushonHealthBundle::class => ['all' => true],
+    Symfony\Bundle\FrameworkBundle\FrameworkBundle::class => ['all' => true],
+    FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle::class => ['test' => true, 'dev' => true],
+    Cushon\HealthBundle\CushonHealthBundle::class => ['all' => true],
+    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
+    Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
 ];

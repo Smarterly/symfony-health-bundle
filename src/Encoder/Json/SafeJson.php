@@ -8,7 +8,10 @@ use Ergebnis\Json\Printer\PrinterInterface;
 
 use function Safe\json_encode;
 
-class SafeJson implements Encoder
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
+final class SafeJson implements Encoder
 {
     public const DEFAULT_INDENT = 2;
 

@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\Message\QueryFactory\ServiceContainerHealthCheck\E
 use Cushon\HealthBundle\Message\QueryFactory\Exception\QueryFactoryException;
 use InvalidArgumentException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class IncorrectQueryType extends InvalidArgumentException implements QueryFactoryException
 {
     /**

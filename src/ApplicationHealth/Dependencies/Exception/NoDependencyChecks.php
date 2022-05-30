@@ -6,6 +6,9 @@ namespace Cushon\HealthBundle\ApplicationHealth\Dependencies\Exception;
 
 use DomainException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class NoDependencyChecks extends DomainException
 {
     /**

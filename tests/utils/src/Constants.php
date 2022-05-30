@@ -27,7 +27,7 @@ final class Constants
      */
     public static function buildDir(): string
     {
-        return getenv('APP_BUILD_DIR');
+        return (string) $_ENV['APP_BUILD_DIR'];
     }
 
     /**

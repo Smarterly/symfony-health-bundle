@@ -1,0 +1,41 @@
+---
+parameters:
+  env(DB_READ_HOST):      '127.0.0.1'
+  env(DB_READ_NAME):      'cushon_health_test'
+  env(DB_READ_USER):      'cushon_read'
+  env(DB_READ_VERSION):   'mariadb-10.7.3'
+  env(DB_READ_PORT):      33010
+
+  env(DB_WRITE_HOST):     '127.0.0.1'
+  env(DB_WRITE_NAME):     'cushon_health_test'
+  env(DB_WRITE_USER):     'cushon_write'
+  env(DB_WRITE_VERSION):  'mariadb-10.7.3'
+  env(DB_WRITE_PORT):     33010 
+
+doctrine:
+  dbal:
+    default_connection: 'read'
+    connections:
+      read:
+        # Connection used for read operations
+        host:             '%env(string:DB_READ_HOST)%'
+        dbname:           '%env(string:DB_READ_NAME)%'
+        user:             '%env(string:DB_READ_USER)%'
+        password:         '%env(string:DB_READ_PASSWORD)%'
+        server_version:   '%env(string:DB_READ_VERSION)%'
+        port:             '%env(int:DB_READ_PORT)%'
+        driver:           'pdo_mysql'
+        options:
+          LoginTimeout:   2
+      write:
+        # Connection used for write operations
+        host:             '%env(string:DB_WRITE_HOST)%'
+        dbname:           '%env(string:DB_WRITE_NAME)%'
+        user:             '%env(string:DB_WRITE_USER)%'
+        password:         '%env(string:DB_WRITE_PASSWORD)%'
+        server_version:   '%env(string:DB_WRITE_VERSION)%'
+        port:             '%env(int:DB_WRITE_PORT)%'
+        driver:           'pdo_mysql'
+        options:
+          LoginTimeout:   2
+

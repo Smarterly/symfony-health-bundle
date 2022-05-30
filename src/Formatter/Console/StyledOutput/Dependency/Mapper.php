@@ -7,6 +7,9 @@ namespace Cushon\HealthBundle\Formatter\Console\StyledOutput\Dependency;
 use Cushon\HealthBundle\ApplicationHealth\HealthReport\DependencyStatus;
 use Cushon\HealthBundle\Message\Result\HealthCheck;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 interface Mapper
 {
     /**

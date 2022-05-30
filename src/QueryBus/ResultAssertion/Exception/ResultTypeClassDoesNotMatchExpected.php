@@ -8,6 +8,9 @@ use Cushon\HealthBundle\Message\Result\HealthCheck;
 use Cushon\HealthBundle\QueryBus\Exception\QueryBusError;
 use InvalidArgumentException;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class ResultTypeClassDoesNotMatchExpected extends InvalidArgumentException implements AssertionError
 {
     /**

@@ -10,6 +10,9 @@ use Cushon\HealthBundle\Formatter\Console\StyledOutput\Dependency\DependencyTabl
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Helper\TableCell;
 
+/**
+ * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
+ */
 final class DependencyRowFactoryTest extends TestCase
 {
     public function testItReturnsAHealthyDependencyRow(): void
