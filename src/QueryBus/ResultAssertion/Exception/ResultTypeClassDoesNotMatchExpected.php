@@ -7,6 +7,7 @@ namespace Cushon\HealthBundle\QueryBus\ResultAssertion\Exception;
 use Cushon\HealthBundle\Message\Result\HealthCheck;
 use Cushon\HealthBundle\QueryBus\Exception\QueryBusError;
 use InvalidArgumentException;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
