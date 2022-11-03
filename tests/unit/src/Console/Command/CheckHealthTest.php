@@ -27,18 +27,6 @@ final class CheckHealthTest extends TestCase
 {
     use ProphecyTrait;
 
-    public function testItConfiguresDefaultDescriptionAndName(): void
-    {
-        $consoleCommand = new CheckHealth(
-            $this->prophesize(HealthCheckQueryBus::class)->reveal(),
-            $this->prophesize(QueryFactory::class)->reveal(),
-            $this->prophesize(ResultFormatterFactory::class)->reveal()
-        );
-
-        $this->assertSame(CheckHealth::DEFAULT_NAME, $consoleCommand->getName());
-        $this->assertSame(CheckHealth::DEFAULT_DESCRIPTION, $consoleCommand->getDescription());
-    }
-
     public function testItOutputsTheHealth(): void
     {
         $healthCheckQuery = $this->prophesize(HealthCheckQuery::class)->reveal();
