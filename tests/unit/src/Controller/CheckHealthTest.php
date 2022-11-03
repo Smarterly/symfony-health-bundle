@@ -58,7 +58,7 @@ final class CheckHealthTest extends TestCase
         $this->assertTrue($dependency->healthy);
     }
 
-    public function testItReturnsAnErrorStatusCodeWhenUnhealthy(): void
+    public function testItReturnsInternalServerErrorStatusCodeWhenUnhealthy(): void
     {
         $serviceName = 'some service';
         $query = new DefaultHealthCheckQuery();

@@ -35,7 +35,7 @@ final class JsonTest extends TestCase
         $this->assertFalse($body->dependencies[0]->healthy);
     }
 
-    public function testItReturnsAnErrorStatusCode(): void
+    public function testItReturnsInternalServerErrorStatusCodeWhenUnhealthy(): void
     {
         $dependencyName = 'some:dependency';
         $dependencyStatus = new SimpleStatus($dependencyName, false);
