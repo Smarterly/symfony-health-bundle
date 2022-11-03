@@ -32,7 +32,7 @@ final class SimpleJson implements Http
     {
         return JsonResponse::fromJsonString(
             $this->encode($healthCheck->jsonSerialize()),
-            Response::HTTP_OK,
+            $healthCheck->isHealthy() ? Response::HTTP_OK : Response::HTTP_INTERNAL_SERVER_ERROR,
             []
         );
     }

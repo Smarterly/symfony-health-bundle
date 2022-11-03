@@ -13,6 +13,7 @@ use Cushon\HealthBundle\Formatter\Http\SimpleJson;
 use Cushon\HealthBundle\Message\Query\HealthCheck\DefaultHealthCheckQuery;
 use Cushon\HealthBundle\Message\QueryFactory\QueryFactory;
 use Cushon\HealthBundle\Message\Result\HealthCheck\Healthy;
+use Cushon\HealthBundle\Message\Result\HealthCheck\Unhealthy;
 use Cushon\HealthBundle\QueryBus\HealthCheckQueryBus;
 use Ergebnis\Json\Printer\Printer;
 use PHPUnit\Framework\TestCase;
@@ -41,7 +42,6 @@ final class CheckHealthTest extends TestCase
         $queryBus = $this->prophesize(HealthCheckQueryBus::class);
         $queryBus->handleHealthCheckQuery($query)->willReturn($result);
 
-
         $jsonFormatter = new SimpleJson(new SafeJson(new Printer()));
         $controller = new CheckHealth(
             $queryBus->reveal(),
@@ -53,6 +53,34 @@ final class CheckHealthTest extends TestCase
         $data = json_decode($response->getContent());
 
         $this->assertSame(Response::HTTP_OK, $response->getStatusCode());
+        $dependency = $data->dependencies[0];
+        $this->assertSame($serviceName, $dependency->name);
+        $this->assertTrue($dependency->healthy);
+    }
+
+    public function testItReturnsInternalServerErrorStatusCodeWhenUnhealthy(): void
+    {
+        $serviceName = 'some service';
+        $query = new DefaultHealthCheckQuery();
+        $queryFactory = $this->prophesize(QueryFactory::class);
+        $queryFactory->createQuery()->willReturn($query);
+
+        $result = new Unhealthy(new SimpleStatus($serviceName, true));
+
+        $queryBus = $this->prophesize(HealthCheckQueryBus::class);
+        $queryBus->handleHealthCheckQuery($query)->willReturn($result);
+
+        $jsonFormatter = new SimpleJson(new SafeJson(new Printer()));
+        $controller = new CheckHealth(
+            $queryBus->reveal(),
+            $queryFactory->reveal(),
+            $jsonFormatter
+        );
+
+        $response = $controller();
+        $data = json_decode($response->getContent());
+
+        $this->assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $response->getStatusCode());
         $dependency = $data->dependencies[0];
         $this->assertSame($serviceName, $dependency->name);
         $this->assertTrue($dependency->healthy);

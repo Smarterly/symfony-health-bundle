@@ -13,14 +13,15 @@ use Cushon\HealthBundle\Message\Result\HealthCheck\Unhealthy;
 use Ergebnis\Json\Printer\Printer;
 use PHPUnit\Framework\TestCase;
 
+use Symfony\Component\HttpFoundation\Response;
 use function Safe\json_decode;
 
 final class JsonTest extends TestCase
 {
     public function testItReturnsAValidJsonResponse(): void
     {
-        $depenencyName = 'some:dependency';
-        $dependencyStatus = new SimpleStatus($depenencyName, false);
+        $dependencyName = 'some:dependency';
+        $dependencyStatus = new SimpleStatus($dependencyName, false);
         $unhealthy = new Unhealthy($dependencyStatus);
 
         $jsonFormatter = new SimpleJson(new SafeJson(new Printer()));
@@ -30,7 +31,19 @@ final class JsonTest extends TestCase
 
         $this->assertSame(HealthCheck::STATUS_UNHEALTHY, $body->status);
         $this->assertNotEmpty($body->dependencies);
-        $this->assertSame($depenencyName, $body->dependencies[0]->name);
+        $this->assertSame($dependencyName, $body->dependencies[0]->name);
         $this->assertFalse($body->dependencies[0]->healthy);
+    }
+
+    public function testItReturnsInternalServerErrorStatusCodeWhenUnhealthy(): void
+    {
+        $dependencyName = 'some:dependency';
+        $dependencyStatus = new SimpleStatus($dependencyName, false);
+        $unhealthy = new Unhealthy($dependencyStatus);
+
+        $jsonFormatter = new SimpleJson(new SafeJson(new Printer()));
+
+        $response = $jsonFormatter->format($unhealthy);
+        $this->assertSame(Response::HTTP_INTERNAL_SERVER_ERROR, $response->getStatusCode());
     }
 }
