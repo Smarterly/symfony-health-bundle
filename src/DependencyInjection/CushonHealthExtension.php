@@ -50,6 +50,15 @@ final class CushonHealthExtension extends Extension
 
         $container->registerForAutoconfiguration(DependencyCheck::class)
             ->addTag($dependencyCheckTag);
+
+        $errorStatus = 500;
+        foreach ($configs as $subConfig) {
+            if (isset($subConfig['error_response_code'])) {
+                $errorStatus = (int) $subConfig['error_response_code'];
+            }
+        }
+
+        $container->setParameter('cushon_health.error_response_code', $errorStatus);
     }
 
     /**
