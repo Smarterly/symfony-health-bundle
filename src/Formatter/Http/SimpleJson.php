@@ -21,7 +21,7 @@ final class SimpleJson implements Http
     /**
      * @param Encoder $encoder
      */
-    public function __construct(Encoder $encoder, int $errorStatus = 500)
+    public function __construct(Encoder $encoder, int $errorStatus = Response::HTTP_INTERNAL_SERVER_ERROR)
     {
         $this->encoder = $encoder;
         $this->errorStatus = $errorStatus;

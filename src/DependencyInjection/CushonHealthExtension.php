@@ -12,6 +12,7 @@ use Symfony\Component\Config\Loader\FileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Barney Hanlon <barney.hanlon@cushon.co.uk>
@@ -51,7 +52,7 @@ final class CushonHealthExtension extends Extension
         $container->registerForAutoconfiguration(DependencyCheck::class)
             ->addTag($dependencyCheckTag);
 
-        $errorStatus = 500;
+        $errorStatus = Response::HTTP_INTERNAL_SERVER_ERROR;
         foreach ($configs as $subConfig) {
             if (isset($subConfig['error_response_code'])) {
                 $errorStatus = (int) $subConfig['error_response_code'];

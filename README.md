@@ -32,8 +32,10 @@ This is configurable by adding the following to your Symfony config YAML file:
 
 ```yaml
     cushon_health:
-        error_response_code: 503
+        error_response_code: !php/const Symfony\Component\HttpFoundation\Response::HTTP_SERVICE_UNAVAILABLE
 ```
+
+Note that the above snippet illustrates an error response code of 503. You can specify any status code here, including a 200 if you wish.
 
 ## The Console Command
 
