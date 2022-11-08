@@ -16,13 +16,15 @@ use Symfony\Component\HttpFoundation\Response;
 final class SimpleJson implements Http
 {
     private Encoder $encoder;
+    private int $errorStatus;
 
     /**
      * @param Encoder $encoder
      */
-    public function __construct(Encoder $encoder)
+    public function __construct(Encoder $encoder, int $errorStatus = Response::HTTP_INTERNAL_SERVER_ERROR)
     {
         $this->encoder = $encoder;
+        $this->errorStatus = $errorStatus;
     }
 
     /**
@@ -32,7 +34,7 @@ final class SimpleJson implements Http
     {
         return JsonResponse::fromJsonString(
             $this->encode($healthCheck->jsonSerialize()),
-            $healthCheck->isHealthy() ? Response::HTTP_OK : Response::HTTP_INTERNAL_SERVER_ERROR,
+            $healthCheck->isHealthy() ? Response::HTTP_OK : $this->errorStatus,
             []
         );
     }

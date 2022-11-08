@@ -40,3 +40,8 @@ services:
   Cushon\HealthBundle\Message\QueryFactory\ServiceContainerHealthCheck:
     arguments:
       - '@service_container'
+
+  Cushon\HealthBundle\Formatter\Http\SimpleJson:
+    arguments:
+      - '@Cushon\HealthBundle\Encoder\Json\SafeJson'
+      - '%cushon_health.error_response_code%'

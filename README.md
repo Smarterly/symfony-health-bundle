@@ -23,6 +23,20 @@ composer require cushon/health-bundle
 
 Several libraries and packages are included in the `suggest` section of the `composer.jspn`. The bundle utilises the `Set` class of [PHP Data Structures][data-structures]. However, the [DS polyfill][php-ds-polyfill] is used to ensure that the bundle can run on a stack without the extension.
 
+## Configuration
+
+### API Error Response Code
+
+When a service is deemed to be unhealthy, the API endpoint will return a 500 status code by default.
+This is configurable by adding the following to your Symfony config YAML file:
+
+```yaml
+    cushon_health:
+        error_response_code: !php/const Symfony\Component\HttpFoundation\Response::HTTP_SERVICE_UNAVAILABLE
+```
+
+Note that the above snippet illustrates an error response code of 503. You can specify any status code here, including a 200 if you wish.
+
 ## The Console Command
 
 ### Usage
