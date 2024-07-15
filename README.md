@@ -10,7 +10,7 @@
 
 ## Overview
 This bundle provides a mini-framework for a [Symfony][symfony] application to be queried on it's current "health". The specifics of what "healthy" and "unhealthy" are depend on the application and must be defined. However, the boilerplate of creating Symfony Controllers and Console Commands to make a query (and provide a health report) are taken care of.
-
+//
 ## Installation
 
 The only supported method of installing the bundle is via [`composer`][composer]:
