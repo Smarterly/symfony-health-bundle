@@ -1,0 +1,81 @@
+
+name: Snyk
+ 
+on:
+  push:
+    branches: 
+      - '**'
+ 
+jobs:
+  security:
+    name: Security Scan
+    environment: snyk-php
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ '20.x' ] # Ensure this is a string inside the array
+   
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+       
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Setup Snyk
+        run: |
+          npm install snyk -g
+          snyk auth ${{ secrets.SNYK_AUTH }}
+
+      # true allows to continue on erros - once we fix the backlog we can disable not failing in the pipeline
+      - name: SAST
+        run: |
+          snyk code test --severity-threshold=high || true
+      
+      # You will see Error: Process completed with exit code 1. - vulnerabilities found with Snyk in the build
+      # This means the job behaves as expected and we can bypass the expected behaviour in CI/CD
+      # You will be able to see the results in SNYK by using the Monitor step
+      # true allows to continue on erros - once we fix the backlog we can disable not failing in the pipeline
+      - name: SCA
+        run: |
+          # Run snyk test and snyk monitor commands, capturing both outputs
+          snyk_output=$( (snyk test --severity-threshold=high --all-projects --detection-depth=4 2>&1 || true) ; (snyk monitor --all-projects --detection-depth=4 --exclude=".ebextensions" 2>&1 || true) )
+
+          # Check if the output contains the message indicating no target files were found
+          if echo "$snyk_output" | grep -q "Could not detect supported target files"; then
+            echo "No supported target files found. No dependencies to scan."
+          else
+            # Print the combined Snyk output (both test and monitor results)
+            echo "$snyk_output"
+          fi
+ 
+
+      # true allows to continue on erros - once we fix the backlog we can disable not failing in the pipeline
+      - name: Container
+        run: |
+          # Find the Dockerfile in your project, assuming it's not at the root.
+          DOCKERFILE_PATH=$(find . -type f -name 'Dockerfile' | head -n 1)
+
+          # Ensure a Dockerfile was found
+          if [ -z "$DOCKERFILE_PATH" ]; then
+            echo "No Dockerfile found in the project! Skipping Docker-related tests."
+          else
+            # Get the directory where the Dockerfile is located
+            DOCKERFILE_DIR=$(dirname "$DOCKERFILE_PATH")
+
+            # Use the current directory name as the image name
+            IMAGE_NAME=$(basename "$PWD")
+
+            # Build the Docker image using the found Dockerfile path
+            docker build -f "$DOCKERFILE_PATH" "$DOCKERFILE_DIR" -t "${IMAGE_NAME}:latest"
+
+            # Run Snyk container test for vulnerabilities
+            snyk container test "${IMAGE_NAME}:latest" --file="$DOCKERFILE_PATH" || true
+
+            # Monitor the Docker image for vulnerabilities
+            snyk container monitor "${IMAGE_NAME}:latest" --file="$DOCKERFILE_PATH"
+          fi
