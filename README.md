@@ -1,4 +1,4 @@
-# Cushon Symfony Health Bundle
+# Cushon Health Bundle
 [![Minimum PHP version: 8.1.0](https://img.shields.io/badge/php-8.1.0%2B-blue.svg?style=flat-square)](https://packagist.org/packages/Smarterly/symfony-health-bundle)
 [![Version](http://poser.pugx.org/cushon/health-bundle/version?style=flat-square)](https://packagist.org/packages/cushon/health-bundle)
 [![License](http://poser.pugx.org/cushon/health-bundle/license?style=flat-square)](https://packagist.org/packages/cushon/health-bundle)
